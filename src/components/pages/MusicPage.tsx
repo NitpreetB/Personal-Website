@@ -6,14 +6,19 @@ import { ExternalLink } from "lucide-react";
 
 /**
  * MusicPage
- * - Alternating left/right sections (left aligned, then right, etc.)
- * - Each section background uses the album’s primary color
- * - Global filter controls: sort by Release Date or Rating (asc/desc)
- * - Optional per-album “View” link
+ * - Alternating left/right sections
+ * - Each section background uses album primaryColor
+ * - Global sort controls: Release Date or Rating (asc/desc)
+ * - Condensed, bold display font styling for headers (Kaytranada-like)
+ * - Skinnier sections (reduced vertical padding + tighter spacing)
  *
- * NOTE:
- *  - For “primary color of the album cover”, the most reliable approach is to store it
- *    with each album (hex). Auto-extraction from images is often blocked by CORS.
+ * IMPORTANT FONT NOTE:
+ * This file assumes you have a condensed display font configured as `font-display`.
+ * Recommended: Anton (Google Font)
+ * 1) Add to index.html:
+ *    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+ * 2) tailwind.config.js:
+ *    extend: { fontFamily: { display: ["Anton","sans-serif"] }, letterSpacing: { ultra: "-0.04em" } }
  */
 
 type Album = {
@@ -21,12 +26,12 @@ type Album = {
   title: string;
   artist: string;
   coverUrl: string;
-  primaryColor: string; // hex (e.g., "#4B2E83")
+  primaryColor: string; // hex (#RRGGBB)
   releaseDate: string; // YYYY-MM-DD
   rating: number; // 0-10
   blurb: string; // one-liner
   review: string; // longer text
-  link?: string; // optional external link
+  link?: string;
 };
 
 type SortKey = "releaseDate" | "rating";
@@ -36,14 +41,9 @@ function hexToRgb(hex: string) {
   const clean = hex.replace("#", "").trim();
   const full = clean.length === 3 ? clean.split("").map((c) => c + c).join("") : clean;
   const num = parseInt(full, 16);
-  return {
-    r: (num >> 16) & 255,
-    g: (num >> 8) & 255,
-    b: num & 255,
-  };
+  return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
 }
 
-// Simple contrast heuristic (YIQ). Returns "text-white" or "text-black"
 function textClassForBg(hex: string) {
   try {
     const { r, g, b } = hexToRgb(hex);
@@ -54,29 +54,27 @@ function textClassForBg(hex: string) {
   }
 }
 
-// Light border/overlay class to keep things readable
 function subtleOverlayClass(hex: string) {
   const text = textClassForBg(hex);
   return text === "text-black" ? "bg-black/5" : "bg-white/10";
 }
 
 function formatDate(dateStr: string) {
-  // Keep it simple + stable
   const d = new Date(dateStr);
   if (Number.isNaN(d.getTime())) return dateStr;
   return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
 }
 
 export default function MusicPage() {
-  // --- Replace these with your real albums ---
+  // --- Replace with your real albums ---
   const albums: Album[] = [
     {
       id: "kaytranada-99-9",
       title: "99.9%",
       artist: "KAYTRANADA",
       coverUrl:
-        "https://i.scdn.co/image/ab67616d0000b2731f0d2a2e4e8f6b0b47e5db3a", // swap if needed
-      primaryColor: "#4B2E83", // purple vibe like your screenshot
+        "https://i.scdn.co/image/ab67616d0000b2731f0d2a2e4e8f6b0b47e5db3a",
+      primaryColor: "#4B2E83",
       releaseDate: "2016-05-06",
       rating: 9.9,
       blurb: "Groove perfection — crisp drums, warm samples, instant replay.",
@@ -88,7 +86,8 @@ export default function MusicPage() {
       id: "album-2",
       title: "After Hours",
       artist: "The Weeknd",
-      coverUrl: "https://i.scdn.co/image/ab67616d0000b2730a9c1c6e7d3d4f3cdb1d5b1d",
+      coverUrl:
+        "https://i.scdn.co/image/ab67616d0000b2730a9c1c6e7d3d4f3cdb1d5b1d",
       primaryColor: "#B71C1C",
       releaseDate: "2020-03-20",
       rating: 8.6,
@@ -101,7 +100,8 @@ export default function MusicPage() {
       id: "album-3",
       title: "Random Access Memories",
       artist: "Daft Punk",
-      coverUrl: "https://i.scdn.co/image/ab67616d0000b273b9b6b63a9d6d1fda3e64d9b7",
+      coverUrl:
+        "https://i.scdn.co/image/ab67616d0000b273b9b6b63a9d6d1fda3e64d9b7",
       primaryColor: "#F9A825",
       releaseDate: "2013-05-17",
       rating: 9.1,
@@ -114,7 +114,8 @@ export default function MusicPage() {
       id: "album-4",
       title: "Channel Orange",
       artist: "Frank Ocean",
-      coverUrl: "https://i.scdn.co/image/ab67616d0000b273e9d7f1d31e5e8e5a9e7f1b2c",
+      coverUrl:
+        "https://i.scdn.co/image/ab67616d0000b273e9d7f1d31e5e8e5a9e7f1b2c",
       primaryColor: "#FF6F00",
       releaseDate: "2012-07-10",
       rating: 9.4,
@@ -125,7 +126,7 @@ export default function MusicPage() {
     },
   ];
 
-  // Global filters
+  // --- Sort controls ---
   const [sortKey, setSortKey] = useState<SortKey>("releaseDate");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
@@ -154,15 +155,17 @@ export default function MusicPage() {
       <Header />
 
       <main className="flex-1">
-        {/* Top header + filters */}
-        <section className="w-full max-w-[120rem] mx-auto px-6 pt-14 pb-10 md:pt-20">
+        {/* Title + controls */}
+        <section className="w-full max-w-[120rem] mx-auto px-6 pt-14 pb-10 md:pt-18">
           <div className="max-w-6xl mx-auto">
-            <h1 className="font-heading text-5xl md:text-6xl text-foreground">Music</h1>
+            <h1 className="font-heading text-5xl md:text-6xl text-foreground">
+              Music
+            </h1>
             <p className="mt-4 font-paragraph text-lg text-foreground/70 max-w-3xl">
               Albums I keep coming back to. Sort by release date or rating and browse each review.
             </p>
 
-            <div className="mt-10 flex flex-col md:flex-row md:items-end gap-4">
+            <div className="mt-8 flex flex-col md:flex-row md:items-end gap-4">
               <div className="flex flex-col gap-2">
                 <label className="font-paragraph text-xs uppercase tracking-widest text-secondary">
                   Sort by
@@ -215,13 +218,9 @@ export default function MusicPage() {
                 className="w-full"
                 style={{ backgroundColor: album.primaryColor }}
               >
-                <div className="w-full max-w-[120rem] mx-auto px-6 py-14 md:py-20">
-                  <div
-                    className={[
-                      "max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start",
-                      isLeft ? "" : "",
-                    ].join(" ")}
-                  >
+                {/* SKINNIER SECTION: reduced py */}
+                <div className="w-full max-w-[120rem] mx-auto px-6 py-10 md:py-12">
+                  <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
                     {/* Cover */}
                     <div
                       className={[
@@ -248,57 +247,55 @@ export default function MusicPage() {
                       ].join(" ")}
                     >
                       <div className={textClass}>
-                        {/* Header */}
-                        <div className="flex flex-col gap-3">
-                          <div className="font-paragraph text-xs uppercase tracking-widest opacity-80">
+                        {/* Header (tighter gap) */}
+                        <div className="flex flex-col gap-2">
+                          {/* Meta */}
+                          <div className="font-paragraph text-xs uppercase tracking-widest opacity-85">
                             {formatDate(album.releaseDate)} • {album.rating.toFixed(1)}/10
                           </div>
 
-                          <h2 className="font-heading text-4xl md:text-6xl leading-[0.95] tracking-tight font-bold">
-                            {album.title}
+                          {/* TITLE: Kaytranada-like condensed block */}
+                          <h2 className="font-display text-5xl md:text-7xl leading-[0.9] tracking-ultra uppercase">
+                            {album.title}{" "}
+                            <span className="block">{album.artist}</span>
                           </h2>
 
-                          <div className="flex items-center gap-3">
-                            <p className="font-paragraph text-lg md:text-xl opacity-90">
-                              {album.artist}
-                            </p>
-
-                            {album.link ? (
-                              <a
-                                href={album.link}
-                                target="_blank"
-                                rel="noreferrer"
-                                className={[
-                                  "inline-flex items-center gap-2 text-sm font-paragraph underline underline-offset-4 opacity-90",
-                                  "hover:opacity-100 transition-opacity",
-                                ].join(" ")}
-                              >
-                                Open <ExternalLink className="w-4 h-4" />
-                              </a>
-                            ) : null}
-                          </div>
+                          {/* Link */}
+                          {album.link ? (
+                            <a
+                              href={album.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              className={[
+                                "inline-flex items-center gap-2 text-sm font-paragraph underline underline-offset-4 opacity-90",
+                                "hover:opacity-100 transition-opacity",
+                              ].join(" ")}
+                            >
+                              Open <ExternalLink className="w-4 h-4" />
+                            </a>
+                          ) : null}
                         </div>
 
-                        {/* Blurb */}
-                        <p className="mt-6 font-paragraph text-lg md:text-xl leading-relaxed opacity-95">
+                        {/* Blurb (slightly tighter) */}
+                        <p className="mt-4 font-paragraph text-lg md:text-xl leading-relaxed opacity-95">
                           {album.blurb}
                         </p>
 
-                        {/* Review box (scrollable like your screenshot) */}
+                        {/* Review box (shorter height) */}
                         <div
                           className={[
-                            "mt-8 border",
+                            "mt-6 border",
                             textClass === "text-black" ? "border-black/15" : "border-white/20",
                             "backdrop-blur-sm",
                           ].join(" ")}
                         >
                           <div
                             className={[
-                              "p-6 md:p-8",
+                              "p-5 md:p-6",
                               textClass === "text-black" ? "bg-white/55" : "bg-black/15",
                             ].join(" ")}
                           >
-                            <div className="max-h-[260px] md:max-h-[320px] overflow-y-auto pr-4">
+                            <div className="max-h-[200px] md:max-h-[240px] overflow-y-auto pr-4">
                               <p
                                 className={[
                                   "font-paragraph text-base md:text-lg leading-relaxed",
@@ -311,8 +308,8 @@ export default function MusicPage() {
                           </div>
                         </div>
 
-                        {/* Small meta row */}
-                        <div className="mt-6 flex flex-wrap gap-3">
+                        {/* Meta chips (tighter) */}
+                        <div className="mt-4 flex flex-wrap gap-2">
                           <span
                             className={[
                               "text-xs font-medium uppercase tracking-wider px-3 py-1 border",
@@ -339,7 +336,7 @@ export default function MusicPage() {
                   </div>
                 </div>
 
-                {/* Divider line between sections (subtle) */}
+                {/* Subtle divider */}
                 <div className="h-px w-full bg-black/10" />
               </div>
             );
