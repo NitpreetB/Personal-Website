@@ -247,9 +247,7 @@ export default function HomePage() {
                 A city that thrives on its diversity
               </p>
               <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
-                If you’re ever in the area, you’ll probably find me working out of a
-                café, walking by the waterfront, or taking a break to explore a new
-                spot in the city.
+       
               </p>
             </div>
 
@@ -264,7 +262,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-foreground/5" />
               </div>
               <p className="mt-4 font-paragraph text-xs uppercase tracking-widest text-secondary">
-                The City is pretty when its dead, just like a flower
+                The City
               </p>
             </div>
           </div>
