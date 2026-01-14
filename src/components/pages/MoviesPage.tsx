@@ -84,20 +84,6 @@ export default function MoviesPage() {
         "A complete world—strange, beautiful, and emotionally direct. It’s one of those movies where the imagination feels endless, but the character beats still land cleanly.",
       link: "https://www.imdb.com/title/tt0245429/",
     },
-    {
-      id: "whiplash",
-      title: "Whiplash",
-      director: "Damien Chazelle",
-      year: 2014,
-      rating: 8.9,
-      genres: ["Drama"],
-      posterUrl:
-        "https://m.media-amazon.com/images/I/71mJ8wQGm2L._AC_SL1200_.jpg",
-      accentColor: "#EF4444",
-      review:
-        "Pure momentum. The editing is the story: pressure, obsession, and the cost of greatness. The final sequence is basically a heartbeat.",
-      link: "https://www.imdb.com/title/tt2582802/",
-    },
   ];
 
   // Filters
