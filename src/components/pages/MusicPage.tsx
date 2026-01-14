@@ -64,14 +64,14 @@ export default function MusicPage() {
       link: "https://open.spotify.com/",
     },
     {
-      id: "kaytranada-99-9",
-      title: "99.9%",
-      artist: "KAYTRANADA",
+      id: "mns",
+      title: "Midnight Sun",
+      artist: "Zara Larsson",
       coverUrl:
-        "https://i.scdn.co/image/ab67616d0000b2731f0d2a2e4e8f6b0b47e5db3a",
-      primaryColor: "#4B2E83",
-      releaseDate: "2016-05-06",
-      rating: 9.9,
+        "https://shop.sonymusic.ca/cdn/shop/files/Zara_Larsson_Midnight_Sun_1500x1500_Cover.webp?v=1749065603&width=823",
+      primaryColor: "#078cbd",
+      releaseDate: "2025-09-25",
+      rating: 7.5,
       review:
         "This album is very special to me. It was introduced to me by a friend who thought I would like Kaytranada and looking back, he could not have been more right. As a debut, it nails a signature sound—tight, side-chained four-on-the-floor energy—while still experimenting with texture, swing, and mood. Standouts hit hard, but the sequencing is what makes it feel effortless: you can let it run front-to-back and it just works.",
       link: "https://open.spotify.com/",
