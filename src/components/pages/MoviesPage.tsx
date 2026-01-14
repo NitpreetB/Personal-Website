@@ -4,21 +4,6 @@ import Footer from "@/components/Footer";
 import { Image } from "@/components/ui/image";
 import { ExternalLink } from "lucide-react";
 
-/**
- * MoviesPage (distinct from MusicPage)
- *
- * Key differences vs Music:
- * ✅ Dark, cinematic “poster wall” vibe (black background + film-grain overlay)
- * ✅ Poster cards in a responsive grid (not alternating left/right)
- * ✅ Each movie opens into an expandable review panel (accordion-ish)
- * ✅ Filters: Sort by Year / Rating, plus Genre filter
- * ✅ Review panel uses a “ticket stub” / “screening card” layout
- *
- * Font usage:
- * - Keep your existing font-heading for the page title
- * - Optionally use `font-display` for movie titles (works well with Anton too)
- */
-
 type Movie = {
   id: string;
   title: string;
@@ -50,7 +35,7 @@ export default function MoviesPage() {
       rating: 9.0,
       genres: ["Sci-Fi", "Thriller"],
       posterUrl:
-        "https://m.media-amazon.com/images/I/91z3w4w0rKL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
       accentColor: "#3B82F6",
       review:
         "A blockbuster that still rewards repeat watches. The structure is ambitious but readable, and the sound/score + practical effects keep it grounded even when the concept goes fully abstract.",
