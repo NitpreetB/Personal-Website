@@ -73,7 +73,7 @@ export default function MusicPage() {
       releaseDate: "2025-09-25",
       rating: 7.5,
       review:
-        "This album is very special to me. It was introduced to me by a friend who thought I would like Kaytranada and looking back, he could not have been more right. As a debut, it nails a signature sound—tight, side-chained four-on-the-floor energy—while still experimenting with texture, swing, and mood. Standouts hit hard, but the sequencing is what makes it feel effortless: you can let it run front-to-back and it just works.",
+        "This album is very special to me. Standouts hit hard, but the sequencing is what makes it feel effortless: you can let it run front-to-back and it just works.",
       link: "https://open.spotify.com/",
     },
     {
