@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { label: 'Home', path: '/' },
+    
     { label: 'About Me', path: '/story' },
     { label: 'Work', path: '/work' },
     { label: 'Education', path: '/education' },
@@ -28,6 +28,7 @@ export default function Header() {
     { label: 'Activities', path: '/activities' },
     { label: 'Music', path: '/music' },
     { label: 'Movies', path: '/movies' },
+    { label: 'Books', path: '/books' },
     { label: 'Blog', path: '/blog' },
   ];
 
