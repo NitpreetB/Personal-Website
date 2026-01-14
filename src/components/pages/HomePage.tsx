@@ -174,7 +174,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-3">
               <span className="sticky top-32 block font-paragraph text-xs font-bold uppercase tracking-widest text-secondary">
-                01 / Philosophy
+                01 / Story
               </span>
             </div>
             <div className="md:col-span-8 md:col-start-5">
