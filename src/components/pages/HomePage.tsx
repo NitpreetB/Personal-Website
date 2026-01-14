@@ -244,7 +244,7 @@ export default function HomePage() {
                 Mississauga, Ontario
               </h2>
               <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
-                A city that thrives on its diversity
+                A city that thrives on it's own diversity and culture
               </p>
               <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
        
