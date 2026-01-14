@@ -264,7 +264,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-foreground/5" />
               </div>
               <p className="mt-4 font-paragraph text-xs uppercase tracking-widest text-secondary">
-                Photo placeholder — swap with your own Mississauga shot
+                The City is pretty when its dead, just like a flower
               </p>
             </div>
           </div>
