@@ -151,9 +151,7 @@ export default function HomePage() {
         className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-50"
         style={{ scaleX }}
       />
-
       <Header />
-
       <main className="w-full relative">
         {/* Optional Grid Overlay for "Zen Grid" feel */}
         {/* <GridOverlay /> */}
@@ -178,18 +176,13 @@ export default function HomePage() {
               </motion.h1>
             </div>
 
-            <div className="md:col-span-5 md:col-start-1 flex flex-col justify-end" />
-
             <div className="md:col-span-6 md:col-start-7">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 className="font-paragraph text-2xl md:text-3xl lg:text-4xl leading-tight text-foreground font-light"
-              >
-                Building intelligent systems that solve complex problems.
-                Specializing in machine learning, data engineering, and scalable AI
-                solutions.
+              > Engineer · Analyst · Student
               </motion.p>
 
               <motion.div
@@ -198,18 +191,7 @@ export default function HomePage() {
                 transition={{ duration: 1, delay: 0.8 }}
                 className="mt-12 flex gap-6"
               >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 px-8 h-14 text-lg"
-                  onClick={() =>
-                    document
-                      .getElementById("projects")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                >
-                  View Selected Work
-                </Button>
+
               </motion.div>
             </div>
           </motion.div>
@@ -427,7 +409,6 @@ export default function HomePage() {
 
         <SectionDivider />
       </main>
-
       <Footer />
     </div>
   );
