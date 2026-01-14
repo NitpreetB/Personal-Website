@@ -104,9 +104,7 @@ export default function HomePage() {
         className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-50"
         style={{ scaleX }}
       />
-
       <Header />
-
       <main className="w-full relative">
         {/* Optional Grid Overlay for "Zen Grid" feel */}
         {/* <GridOverlay /> */}
@@ -126,9 +124,7 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="font-heading text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter font-bold text-foreground uppercase"
-              >
-                Alex Chen
-              </motion.h1>
+              >{"Nitpreet Bamra"}</motion.h1>
             </div>
 
             <div className="md:col-span-5 md:col-start-1 flex flex-col justify-end">
@@ -468,7 +464,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

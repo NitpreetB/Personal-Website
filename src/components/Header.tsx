@@ -44,12 +44,6 @@ export default function Header() {
       }`}
     >
       <nav className="max-w-[120rem] mx-auto px-[10%] py-8 flex items-center justify-between">
-        <Link
-          to="/"
-          className="font-heading text-xl text-foreground hover:text-accent transition-colors duration-300"
-        >
-          AC
-        </Link>
 
         <div className="flex items-center gap-12">
           <button
