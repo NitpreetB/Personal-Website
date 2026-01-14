@@ -11,10 +11,10 @@ export default function TravelPage() {
             <h1 className="font-heading text-5xl md:text-6xl mb-12 text-foreground">Travel</h1>
             <div className="prose prose-lg max-w-none">
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
-                Explore the places I've visited and the adventures I've experienced around the world.
+                Travel stories, photos, and memories coming soon.
               </p>
               <p className="font-paragraph text-lg text-foreground/80">
-                Travel stories, photos, and memories from my journeys will be shared here.
+                
               </p>
             </div>
           </div>
