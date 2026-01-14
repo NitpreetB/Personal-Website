@@ -4,12 +4,6 @@ import Footer from "@/components/Footer";
 import { Image } from "@/components/ui/image";
 import { ExternalLink } from "lucide-react";
 
-/**
- * BooksPage (distinct from MoviesPage)
- *
- * Same general idea: grid (covers) + focused panel (review),
- * but styled like a quiet “library shelf” instead of a cinema.
- */
 
 type Book = {
   id: string;
@@ -37,68 +31,20 @@ export default function BooksPage() {
   // --- Replace with your real books ---
   const books: Book[] = [
     {
-      id: "atomic-habits",
-      title: "Atomic Habits",
-      author: "James Clear",
-      year: 2018,
-      rating: 8.7,
+      id: "ob",
+      title: "Option B",
+      author: "Sheryl Sandberg",
+      year: 2017,
+      rating: 1,
       genres: ["Nonfiction", "Self-Improvement"],
       coverUrl:
-        "https://m.media-amazon.com/images/I/91bYsX41DVL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61Y9bGTj2mL._SL1500_.jpg",
       accentColor: "#10B981",
-      format: "Print",
-      status: "Read",
-      review:
-        "Simple ideas, executed well. The best part is how actionable it is—tiny changes, clear examples, and a framework you can actually stick to without turning your life into a spreadsheet.",
-      link: "https://www.goodreads.com/book/show/40121378-atomic-habits",
-    },
-    {
-      id: "deep-work",
-      title: "Deep Work",
-      author: "Cal Newport",
-      year: 2016,
-      rating: 8.9,
-      genres: ["Nonfiction", "Productivity"],
-      coverUrl:
-        "https://m.media-amazon.com/images/I/71X4YBqf2UL._AC_SL1500_.jpg",
-      accentColor: "#3B82F6",
-      format: "Ebook",
-      status: "Read",
-      review:
-        "A good reminder that focus is a skill, not a personality trait. It’s not just about motivation — it’s about setting up your environment so depth becomes the default.",
-      link: "https://www.goodreads.com/book/show/25744928-deep-work",
-    },
-    {
-      id: "the-alchemist",
-      title: "The Alchemist",
-      author: "Paulo Coelho",
-      year: 1988,
-      rating: 8.2,
-      genres: ["Fiction", "Philosophy"],
-      coverUrl:
-        "https://m.media-amazon.com/images/I/71aFt4+OTOL._AC_SL1500_.jpg",
-      accentColor: "#F59E0B",
-      format: "Audiobook",
-      status: "Read",
-      review:
-        "Light, symbolic, and easy to return to. It’s less about plot and more about mood — the kind of book that hits differently depending on where you’re at in life.",
-      link: "https://www.goodreads.com/book/show/865.The_Alchemist",
-    },
-    {
-      id: "thinking-fast-slow",
-      title: "Thinking, Fast and Slow",
-      author: "Daniel Kahneman",
-      year: 2011,
-      rating: 9.1,
-      genres: ["Nonfiction", "Psychology"],
-      coverUrl:
-        "https://m.media-amazon.com/images/I/71wvKXWfcML._AC_SL1500_.jpg",
-      accentColor: "#EF4444",
       format: "Print",
       status: "Reading",
       review:
-        "Dense but worth it. It changes how you notice your own decisions — not in a dramatic way, but in a quiet ‘oh wow, I do that’ way that sticks with you.",
-      link: "https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow",
+        "Facing Adversity, Building Resilience, and Finding Joy",
+      link: "https://www.goodreads.com/book/show/32938155-option-b?from_search=true&from_srp=true&qid=r4QpV3vuVK&rank=1",
     },
   ];
 
