@@ -18,7 +18,7 @@ import TravelPage from '@/components/pages/TravelPage';
 import ActivitiesPage from '@/components/pages/ActivitiesPage';
 import MusicPage from '@/components/pages/MusicPage';
 import MoviesPage from '@/components/pages/MoviesPage';
-import BooksPage from '@/components/pages/BooksPage';
+import BookPage from '@/components/pages/BookPage';
 import BlogPage from '@/components/pages/BlogPage';
 
 // Layout component that includes ScrollToTop
@@ -110,7 +110,7 @@ const router = createBrowserRouter(
         },
         {
           path: 'books',
-          element: <BooksPage />,
+          element: <BookPage />,
           routeMetadata: {
             pageIdentifier: 'books',
           },
