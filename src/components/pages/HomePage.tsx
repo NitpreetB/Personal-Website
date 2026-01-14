@@ -498,7 +498,7 @@ function ProjectCard({ project, index }: { project: Projects; index: number }) {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
              <Image
-              src={project.projectImage || "https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=1"}
+              src={project.projectImage || "https://static.wixstatic.com/media/830b33_64cbde5666404da089ccdb982d07cc85~mv2.png?originWidth=1600&originHeight=896"}
               alt={project.title || "Project Preview"}
               width={1600}
               className="w-full h-full object-cover"
