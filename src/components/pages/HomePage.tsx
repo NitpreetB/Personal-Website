@@ -108,7 +108,6 @@ export default function HomePage() {
       <main className="w-full relative">
         {/* Optional Grid Overlay for "Zen Grid" feel */}
         {/* <GridOverlay /> */}
-
         {/* --- HERO SECTION --- */}
         <section 
           ref={heroRef}
@@ -128,17 +127,7 @@ export default function HomePage() {
             </div>
 
             <div className="md:col-span-5 md:col-start-1 flex flex-col justify-end">
-               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="flex items-center gap-4 mb-8"
-               >
-                 <div className="h-px w-12 bg-accent"></div>
-                 <span className="font-paragraph text-sm uppercase tracking-widest text-accent font-medium">
-                   System Architecture & AI
-                 </span>
-               </motion.div>
+
             </div>
 
             <div className="md:col-span-6 md:col-start-7">
@@ -179,9 +168,7 @@ export default function HomePage() {
             <span className="font-paragraph text-xs uppercase tracking-widest text-secondary">Scroll to Explore</span>
           </motion.div>
         </section>
-
         <SectionDivider />
-
         {/* --- PHILOSOPHY / INTRO --- */}
         <section className="w-full py-32 px-[5%] max-w-[120rem] mx-auto bg-light-gray/30">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -197,272 +184,14 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
         <SectionDivider />
-
         {/* --- PROJECTS SECTION (Sticky Sidebar Layout) --- */}
-        <section id="projects" className="w-full py-32 px-[5%] max-w-[120rem] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 relative">
-            {/* Sticky Sidebar */}
-            <div className="md:col-span-3 hidden md:block">
-              <div className="sticky top-32">
-                <h2 className="font-heading text-5xl font-bold text-foreground mb-4 tracking-tight">
-                  Selected<br/>Work
-                </h2>
-                <p className="font-paragraph text-sm text-secondary uppercase tracking-widest mb-8">
-                  Case Studies &<br/>Deployments
-                </p>
-                <div className="h-px w-12 bg-accent mb-8"></div>
-                <Link to="/projects" className="inline-flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                  View All Projects <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Mobile Title */}
-            <div className="md:hidden col-span-1 mb-12">
-              <h2 className="font-heading text-4xl font-bold text-foreground mb-2">Selected Work</h2>
-              <div className="h-px w-full bg-foreground/10"></div>
-            </div>
-
-            {/* Projects List */}
-            <div className="md:col-span-9 flex flex-col gap-32">
-              {isLoadingProjects ? (
-                <div className="h-96 flex items-center justify-center bg-light-gray/20 animate-pulse">
-                  <span className="text-secondary">Loading Projects...</span>
-                </div>
-              ) : projects.length > 0 ? (
-                projects.map((project, index) => (
-                  <ProjectCard key={project._id} project={project} index={index} />
-                ))
-              ) : (
-                <div className="py-20 text-center border border-dashed border-secondary/30">
-                  <p className="text-secondary">No projects currently available.</p>
-                </div>
-              )}
-              
-              <div className="md:hidden mt-12">
-                 <Link to="/projects">
-                  <Button variant="outline" className="w-full">View All Projects</Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <SectionDivider />
-
         {/* --- ABOUT & SKILLS SECTION --- */}
-        <section id="about" className="w-full py-32 px-[5%] max-w-[120rem] mx-auto bg-foreground text-background">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-3">
-              <span className="sticky top-32 block font-paragraph text-xs font-bold uppercase tracking-widest text-secondary-foreground/60">
-                02 / Profile
-              </span>
-            </div>
-            
-            <div className="md:col-span-9">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32">
-                <div className="space-y-6 font-paragraph text-lg text-secondary-foreground/90 leading-relaxed">
-                  <p>
-                    I'm a data scientist and AI engineer with a passion for building systems that make 
-                    sense of complex data. My work sits at the intersection of machine learning, software 
-                    engineering, and product development.
-                  </p>
-                  <p>
-                    Over the past several years, I've developed production ML systems, designed data 
-                    pipelines processing millions of records, and built AI-powered tools that help teams 
-                    make better decisions.
-                  </p>
-                </div>
-                <div className="space-y-6 font-paragraph text-lg text-secondary-foreground/90 leading-relaxed">
-                  <p>
-                    My approach is rooted in first principles thinking and iterative development. I focus 
-                    on understanding the problem deeply before jumping to solutions.
-                  </p>
-                  <p>
-                    When I'm not coding, I'm reading research papers, experimenting with new frameworks, 
-                    or thinking about how AI can augment human capabilities rather than replace them.
-                  </p>
-                </div>
-              </div>
-
-              {/* Skills Grid */}
-              <div className="border-t border-secondary-foreground/20 pt-20">
-                <h3 className="font-heading text-3xl mb-12 text-primary-foreground">Technical Arsenal</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                  {Object.entries(groupedSkills).map(([category, categorySkills]) => (
-                    <div key={category}>
-                      <h4 className="font-paragraph text-xs uppercase tracking-widest text-accent mb-6">
-                        {category}
-                      </h4>
-                      <ul className="space-y-3">
-                        {categorySkills.map((skill) => (
-                          <li key={skill._id} className="flex items-center justify-between border-b border-secondary-foreground/10 pb-2">
-                            <span className="text-secondary-foreground font-medium">{skill.skillName}</span>
-                            {skill.proficiencyLevel && (
-                              <span className="text-xs text-secondary-foreground/50">{skill.proficiencyLevel}</span>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* --- EXPERIENCE SECTION --- */}
-        <section id="resume" className="w-full py-32 px-[5%] max-w-[120rem] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-3">
-              <div className="sticky top-32">
-                <span className="block font-paragraph text-xs font-bold uppercase tracking-widest text-secondary mb-4">
-                  03 / Timeline
-                </span>
-                <h2 className="font-heading text-4xl font-bold text-foreground mb-8">Experience</h2>
-                <Button 
-                  variant="default" 
-                  className="bg-foreground text-background hover:bg-accent hover:text-white transition-colors rounded-none"
-                >
-                  Download Resume
-                </Button>
-              </div>
-            </div>
-
-            <div className="md:col-span-8 md:col-start-5 relative border-l border-light-gray pl-8 md:pl-16 space-y-20">
-              {isLoadingExperience ? (
-                <div className="animate-pulse text-secondary">Loading timeline...</div>
-              ) : experience.length > 0 ? (
-                experience.map((exp, index) => (
-                  <motion.div 
-                    key={exp._id}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative group"
-                  >
-                    {/* Timeline Dot */}
-                    <div className="absolute -left-[41px] md:-left-[73px] top-2 w-4 h-4 bg-background border-2 border-secondary group-hover:border-accent group-hover:bg-accent transition-colors duration-300 rounded-full z-10" />
-                    
-                    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 mb-4">
-                      <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
-                        {exp.companyName}
-                      </h3>
-                      <span className="font-paragraph text-sm font-medium text-accent uppercase tracking-wider">
-                        {exp.startDate && new Date(exp.startDate).getFullYear()} — {exp.endDate ? new Date(exp.endDate).getFullYear() : 'Present'}
-                      </span>
-                    </div>
-                    
-                    <h4 className="font-paragraph text-xl text-dark-gray mb-4">{exp.jobTitle}</h4>
-                    
-                    {exp.description && (
-                      <p className="font-paragraph text-secondary leading-relaxed max-w-3xl">
-                        {exp.description}
-                      </p>
-                    )}
-                    
-                    {exp.location && (
-                      <p className="mt-4 text-xs text-secondary uppercase tracking-widest">
-                        {exp.location}
-                      </p>
-                    )}
-                  </motion.div>
-                ))
-              ) : (
-                <p className="text-secondary">No experience data available.</p>
-              )}
-            </div>
-          </div>
-        </section>
-
         <SectionDivider />
-
         {/* --- CONTACT SECTION --- */}
-        <section id="contact" className="w-full py-32 px-[5%] max-w-[120rem] mx-auto bg-light-gray/20">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-3">
-              <span className="sticky top-32 block font-paragraph text-xs font-bold uppercase tracking-widest text-secondary">
-                04 / Contact
-              </span>
-            </div>
-
-            <div className="md:col-span-8 md:col-start-5">
-              <h2 className="font-heading text-5xl md:text-6xl font-bold text-foreground mb-8 tracking-tight">
-                Let's Build<br/>Something.
-              </h2>
-              <p className="font-paragraph text-xl text-secondary mb-16 max-w-2xl">
-                I'm always interested in hearing about new projects, opportunities, or just connecting with fellow builders.
-              </p>
-
-              <form onSubmit={handleSubmit} className="space-y-12">
-                <div className="grid md:grid-cols-2 gap-12">
-                  <div className="group">
-                    <label htmlFor="name" className="block text-xs uppercase tracking-widest text-secondary mb-2 group-focus-within:text-accent transition-colors">Name</label>
-                    <Input
-                      id="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="border-0 border-b border-secondary/30 rounded-none px-0 py-4 text-xl bg-transparent focus-visible:ring-0 focus-visible:border-accent transition-colors placeholder:text-secondary/20 h-auto"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="email" className="block text-xs uppercase tracking-widest text-secondary mb-2 group-focus-within:text-accent transition-colors">Email</label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      className="border-0 border-b border-secondary/30 rounded-none px-0 py-4 text-xl bg-transparent focus-visible:ring-0 focus-visible:border-accent transition-colors placeholder:text-secondary/20 h-auto"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-                <div className="group">
-                  <label htmlFor="message" className="block text-xs uppercase tracking-widest text-secondary mb-2 group-focus-within:text-accent transition-colors">Message</label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    rows={4}
-                    className="border-0 border-b border-secondary/30 rounded-none px-0 py-4 text-xl bg-transparent focus-visible:ring-0 focus-visible:border-accent transition-colors placeholder:text-secondary/20 resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-                
-                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pt-8">
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="bg-foreground text-background hover:bg-accent hover:text-white transition-all duration-300 rounded-none px-12 h-16 text-lg"
-                  >
-                    Send Message
-                  </Button>
-
-                  <div className="flex gap-8">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-foreground transition-colors">
-                      <Github className="w-6 h-6" />
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-foreground transition-colors">
-                      <Linkedin className="w-6 h-6" />
-                    </a>
-                    <a href="mailto:alex@example.com" className="text-secondary hover:text-foreground transition-colors">
-                      <Mail className="w-6 h-6" />
-                    </a>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>

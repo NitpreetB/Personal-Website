@@ -8,9 +8,7 @@ export default function Footer() {
       <div className="max-w-[100rem] mx-auto px-[10%] py-16">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <div>
-            <p className="font-heading text-lg text-foreground mb-2">
-              Alex Chen
-            </p>
+            <p className="font-heading text-lg text-foreground mb-2">{"Nitpreet Bamra"}</p>
             <p className="font-paragraph text-sm text-secondary">
               © {currentYear} All rights reserved
             </p>
