@@ -89,6 +89,19 @@ export default function MusicPage() {
         "A masterclass in restraint and craft. It’s playful, expensive-sounding, and intentionally paced. The best moments feel like a celebration of musicianship without losing the electronic DNA that makes it Daft Punk.",
       link: "https://open.spotify.com/",
     },
+     {
+      id: "p4",
+      title: "PARTYNEXTDOOR 4 (P4)",
+      artist: "PARTYNEXTDOOR",
+      coverUrl:
+        "https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2F49fcbb2677486891d6b5a2f7e5f00f66.1000x1000x1.png",
+      primaryColor: "#523d65",
+      releaseDate: "2024-04-26",
+      rating: 10,
+      review:
+        "r&b classic",
+      link: "https://open.spotify.com/",
+    },
   ];
 
   // --- Sort controls ---
