@@ -8,7 +8,7 @@ export default function StoryPage() {
       <main className="flex-1">
         <section className="w-full max-w-[100rem] mx-auto px-6 py-16 md:py-24">
           <div className="max-w-4xl mx-auto">
-            <h1 className="font-heading text-5xl md:text-6xl mb-8 text-foreground">My Story</h1>
+            <h1 className="font-heading text-5xl md:text-6xl mb-8 text-foreground">About Me</h1>
             <div className="prose prose-lg max-w-none">
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
                 Welcome to my story. This is where I share my journey, experiences, and the path that has shaped who I am today.
