@@ -11,7 +11,7 @@ export default function StoryPage() {
             <h1 className="font-heading text-5xl md:text-6xl mb-8 text-foreground">About Me</h1>
             <div className="prose prose-lg max-w-none">
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
-                Welcome to my story. This is where I share my journey, experiences, and the path that has shaped who I am today.
+              I was born in Mississauga, Ontario in 2003
               </p>
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
                 Every journey has a beginning, and mine started with a passion for learning and creating. Over the years, I've had the opportunity to work on diverse projects, collaborate with talented individuals, and continuously grow both personally and professionally.
