@@ -115,6 +115,19 @@ export default function MusicPage() {
         "I really made the album that i needed to heal myself",
       link: "https://open.spotify.com/",
     },
+    {
+      id: "Hss",
+      title: "HEARTS SOLD SEPARATELY",
+      artist: "Mariah the Scientist",
+      coverUrl:
+        "https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2F95d77506e0dbb7bb0c384174dd834ea8.1000x1000x1.png",
+      primaryColor: "#cb8798",
+      releaseDate: "2025-08-22",
+      rating: 6.5,
+      review:
+        "This is a warning: Your time is up",
+      link: "https://open.spotify.com/",
+    },
 
   ];
 
