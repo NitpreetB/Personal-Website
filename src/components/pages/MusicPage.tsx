@@ -71,7 +71,7 @@ export default function MusicPage() {
         "https://shop.sonymusic.ca/cdn/shop/files/Zara_Larsson_Midnight_Sun_1500x1500_Cover.webp?v=1749065603&width=823",
       primaryColor: "#015290",
       releaseDate: "2025-09-25",
-      rating: 7.5,
+      rating: 7,
       review:
         "This album is very special to me. Standouts hit hard, but the sequencing is what makes it feel effortless: you can let it run front-to-back and it just works.",
       link: "https://open.spotify.com/",
@@ -84,7 +84,7 @@ export default function MusicPage() {
         "https://m.media-amazon.com/images/I/81R1bBXjfZL._US972_BO54,255,255,255_FMjpg_QL100_.jpg",
       primaryColor: "#b89776",
       releaseDate: "2025-02-21",
-      rating: 8.5,
+      rating: 7.5,
       review:
         "A masterclass in restraint and craft. It’s playful, expensive-sounding, and intentionally paced. The best moments feel like a celebration of musicianship without losing the electronic DNA that makes it Daft Punk.",
       link: "https://open.spotify.com/",
@@ -102,6 +102,20 @@ export default function MusicPage() {
         "r&b classic",
       link: "https://open.spotify.com/",
     },
+    {
+      id: "sincerly",
+      title: "Sincerely,",
+      artist: "Kali Uchis",
+      coverUrl:
+        "https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2F8642dc3f58c90b87c6d0a908cebaa723.1000x1000x1.png",
+      primaryColor: "#b35a60",
+      releaseDate: "2025-05-09",
+      rating: 8.1,
+      review:
+        "I really made the album that i needed to heal myself",
+      link: "https://open.spotify.com/",
+    },
+
   ];
 
   // --- Sort controls ---
