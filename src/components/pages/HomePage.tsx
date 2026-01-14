@@ -356,6 +356,39 @@ export default function HomePage() {
 
         <SectionDivider />
 
+        {/* --- PROJECTS SECTION PLACEHOLDER (keep your existing implementation here) --- */}
+        {/* Example anchor so your hero button works */}
+        <section
+          id="projects"
+          className="w-full py-32 px-[5%] max-w-[120rem] mx-auto bg-background"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-3">
+              <SectionLabel>06 / Projects</SectionLabel>
+            </div>
+
+            <div className="md:col-span-8 md:col-start-5 space-y-16">
+              {isLoadingProjects ? (
+                <p className="font-paragraph text-lg text-secondary">Loading projects…</p>
+              ) : projects.length === 0 ? (
+                <p className="font-paragraph text-lg text-secondary">
+                  No projects found yet.
+                </p>
+              ) : (
+                <div className="space-y-20">
+                  {projects.map((p, i) => (
+                    <ProjectCard key={p._id} project={p} index={i} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider />
+      </main>
+      <Footer />
+    </div>
   );
 }
 
