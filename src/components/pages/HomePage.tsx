@@ -256,7 +256,7 @@ export default function HomePage() {
             <div className="lg:col-span-6">
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-light-gray border border-light-gray">
                 <Image
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGnVoeW4IKGPyNNswJIzS0jDL3bFSwYQd9Cw&s"
+                  src="https://media.istockphoto.com/id/1083429836/photo/absolute-towers-in-mississauga-ontario-canada-night-shot.jpg?s=612x612&w=0&k=20&c=0qCqzC05UhQps7C30VkWQaSdds4FJSPET2wW8uvK7bU="
                   alt="A city scene representing Mississauga"
                   width={1600}
                   className="w-full h-full object-cover"
