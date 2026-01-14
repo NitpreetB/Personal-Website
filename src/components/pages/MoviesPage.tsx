@@ -49,7 +49,7 @@ export default function MoviesPage() {
       rating: 8.3,
       genres: ["Crime", "Drama"],
       posterUrl:
-        "https://m.media-amazon.com/images/I/81gZ2Z5YyQL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61luAu5kqTL._AC_UF894,1000_QL80_.jpg",
       accentColor: "#DC2626",
       review:
         "Excessive, iconic, and unapologetic. Scarface is less about realism and more about ambition spiraling out of control — loud, messy, and unforgettable.",
