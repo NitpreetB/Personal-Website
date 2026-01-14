@@ -356,6 +356,7 @@ export default function HomePage() {
 
         <SectionDivider />
 
+  );
 }
 
 // --- Sub-Components ---
