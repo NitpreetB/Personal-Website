@@ -2,23 +2,18 @@ import React, { useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Image } from "@/components/ui/image";
-import { ExternalLink } from "lucide-react";
 
 /**
- * MusicPage
- * - Alternating left/right sections
- * - Each section background uses album primaryColor
- * - Global sort controls: Release Date or Rating (asc/desc)
- * - Condensed, bold display font styling for headers (Kaytranada-like)
- * - Skinnier sections (reduced vertical padding + tighter spacing)
+ * Updates per your request:
+ * ✅ Release + Rating chips moved to the TOP (and removed redundant meta line)
+ * ✅ Removed "Open" link
+ * ✅ Album title + artist are the link
+ * ✅ Removed one-liner blurb (go straight into the review textbox)
+ * ✅ Keeps alternating left/right layout + section primaryColor background
+ * ✅ Keeps global sorting by Release Date / Rating
  *
- * IMPORTANT FONT NOTE:
- * This file assumes you have a condensed display font configured as `font-display`.
- * Recommended: Anton (Google Font)
- * 1) Add to index.html:
- *    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
- * 2) tailwind.config.js:
- *    extend: { fontFamily: { display: ["Anton","sans-serif"] }, letterSpacing: { ultra: "-0.04em" } }
+ * Font:
+ * - Uses `font-display` for the big condensed headers (Anton recommended)
  */
 
 type Album = {
@@ -26,11 +21,10 @@ type Album = {
   title: string;
   artist: string;
   coverUrl: string;
-  primaryColor: string; // hex (#RRGGBB)
+  primaryColor: string;
   releaseDate: string; // YYYY-MM-DD
   rating: number; // 0-10
-  blurb: string; // one-liner
-  review: string; // longer text
+  review: string;
   link?: string;
 };
 
@@ -69,6 +63,19 @@ export default function MusicPage() {
   // --- Replace with your real albums ---
   const albums: Album[] = [
     {
+      id: "after-hours",
+      title: "After Hours",
+      artist: "The Weeknd",
+      coverUrl:
+        "https://i.scdn.co/image/ab67616d0000b2730a9c1c6e7d3d4f3cdb1d5b1d",
+      primaryColor: "#B71C1C",
+      releaseDate: "2020-03-20",
+      rating: 8.6,
+      review:
+        "A polished, immersive listen with sharp songwriting and a consistent visual/sonic world. It’s one of those albums where the production does half the storytelling—glossy synths, dramatic transitions, and a mood that stays coherent without feeling flat.",
+      link: "https://open.spotify.com/",
+    },
+    {
       id: "kaytranada-99-9",
       title: "99.9%",
       artist: "KAYTRANADA",
@@ -77,27 +84,12 @@ export default function MusicPage() {
       primaryColor: "#4B2E83",
       releaseDate: "2016-05-06",
       rating: 9.9,
-      blurb: "Groove perfection — crisp drums, warm samples, instant replay.",
       review:
         "This album is very special to me. It was introduced to me by a friend who thought I would like Kaytranada and looking back, he could not have been more right. As a debut, it nails a signature sound—tight, side-chained four-on-the-floor energy—while still experimenting with texture, swing, and mood. Standouts hit hard, but the sequencing is what makes it feel effortless: you can let it run front-to-back and it just works.",
-      link: "https://open.spotify.com/album/6JD4Qerb3vQy2zE4i1Z0H1",
-    },
-    {
-      id: "album-2",
-      title: "After Hours",
-      artist: "The Weeknd",
-      coverUrl:
-        "https://preview.redd.it/yn81w7k64vh41.jpg?width=1080&crop=smart&auto=webp&s=86eb7af0663416adb8d62ad7024fd21907c85fda",
-      primaryColor: "#B71C1C",
-      releaseDate: "2020-03-20",
-      rating: 8.6,
-      blurb: "Cinematic pop with a dark glow — huge hooks, tight atmosphere.",
-      review:
-        "A polished, immersive listen with sharp songwriting and a consistent visual/sonic world. It’s one of those albums where the production does half the storytelling—glossy synths, dramatic transitions, and a mood that stays coherent without feeling flat.",
       link: "https://open.spotify.com/",
     },
     {
-      id: "album-3",
+      id: "ram",
       title: "Random Access Memories",
       artist: "Daft Punk",
       coverUrl:
@@ -105,23 +97,8 @@ export default function MusicPage() {
       primaryColor: "#F9A825",
       releaseDate: "2013-05-17",
       rating: 9.1,
-      blurb: "Analog luxury — immaculate arrangements and timeless bounce.",
       review:
         "A masterclass in restraint and craft. It’s playful, expensive-sounding, and intentionally paced. The best moments feel like a celebration of musicianship without losing the electronic DNA that makes it Daft Punk.",
-      link: "https://open.spotify.com/",
-    },
-    {
-      id: "album-4",
-      title: "Channel Orange",
-      artist: "Frank Ocean",
-      coverUrl:
-        "https://i.scdn.co/image/ab67616d0000b273e9d7f1d31e5e8e5a9e7f1b2c",
-      primaryColor: "#FF6F00",
-      releaseDate: "2012-07-10",
-      rating: 9.4,
-      blurb: "Storytelling with warmth — soulful, sharp, and endlessly replayable.",
-      review:
-        "It balances vulnerability and precision—every track feels intentional. The writing is vivid, the melodies stick, and the production supports the narrative without stealing the spotlight.",
       link: "https://open.spotify.com/",
     },
   ];
@@ -158,11 +135,9 @@ export default function MusicPage() {
         {/* Title + controls */}
         <section className="w-full max-w-[120rem] mx-auto px-6 pt-14 pb-10 md:pt-18">
           <div className="max-w-6xl mx-auto">
-            <h1 className="font-heading text-5xl md:text-6xl text-foreground">
-              Music
-            </h1>
+            <h1 className="font-heading text-5xl md:text-6xl text-foreground">Music</h1>
             <p className="mt-4 font-paragraph text-lg text-foreground/70 max-w-3xl">
-              Albums I keep coming back to. Sort by release date or rating and browse each review.
+              Albums I keep coming back to. Sort by release date or rating.
             </p>
 
             <div className="mt-8 flex flex-col md:flex-row md:items-end gap-4">
@@ -212,13 +187,17 @@ export default function MusicPage() {
             const textClass = textClassForBg(album.primaryColor);
             const overlay = subtleOverlayClass(album.primaryColor);
 
+            const chipBase =
+              textClass === "text-black"
+                ? "border-black/20 text-black/80"
+                : "border-white/25 text-white/90";
+
+            const boxBg = textClass === "text-black" ? "bg-white/55" : "bg-black/15";
+            const boxBorder = textClass === "text-black" ? "border-black/15" : "border-white/20";
+            const bodyText = textClass === "text-black" ? "text-black/80" : "text-white/90";
+
             return (
-              <div
-                key={album.id}
-                className="w-full"
-                style={{ backgroundColor: album.primaryColor }}
-              >
-                {/* SKINNIER SECTION: reduced py */}
+              <div key={album.id} className="w-full" style={{ backgroundColor: album.primaryColor }}>
                 <div className="w-full max-w-[120rem] mx-auto px-6 py-10 md:py-12">
                   <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
                     {/* Cover */}
@@ -247,75 +226,12 @@ export default function MusicPage() {
                       ].join(" ")}
                     >
                       <div className={textClass}>
-                        {/* Header (tighter gap) */}
-                        <div className="flex flex-col gap-2">
-                          {/* Meta */}
-                          <div className="font-paragraph text-xs uppercase tracking-widest opacity-85">
-                            {formatDate(album.releaseDate)} • {album.rating.toFixed(1)}/10
-                          </div>
-
-                          {/* TITLE: Kaytranada-like condensed block */}
-                          <h2 className="font-display text-5xl md:text-7xl leading-[0.9] tracking-ultra uppercase">
-                            {album.title}{" "}
-                            <span className="block">{album.artist}</span>
-                          </h2>
-
-                          {/* Link */}
-                          {album.link ? (
-                            <a
-                              href={album.link}
-                              target="_blank"
-                              rel="noreferrer"
-                              className={[
-                                "inline-flex items-center gap-2 text-sm font-paragraph underline underline-offset-4 opacity-90",
-                                "hover:opacity-100 transition-opacity",
-                              ].join(" ")}
-                            >
-                              Open <ExternalLink className="w-4 h-4" />
-                            </a>
-                          ) : null}
-                        </div>
-
-                        {/* Blurb (slightly tighter) */}
-                        <p className="mt-4 font-paragraph text-lg md:text-xl leading-relaxed opacity-95">
-                          {album.blurb}
-                        </p>
-
-                        {/* Review box (shorter height) */}
-                        <div
-                          className={[
-                            "mt-6 border",
-                            textClass === "text-black" ? "border-black/15" : "border-white/20",
-                            "backdrop-blur-sm",
-                          ].join(" ")}
-                        >
-                          <div
-                            className={[
-                              "p-5 md:p-6",
-                              textClass === "text-black" ? "bg-white/55" : "bg-black/15",
-                            ].join(" ")}
-                          >
-                            <div className="max-h-[200px] md:max-h-[240px] overflow-y-auto pr-4">
-                              <p
-                                className={[
-                                  "font-paragraph text-base md:text-lg leading-relaxed",
-                                  textClass === "text-black" ? "text-black/80" : "text-white/90",
-                                ].join(" ")}
-                              >
-                                {album.review}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Meta chips (tighter) */}
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        {/* TOP CHIPS (release/rating) */}
+                        <div className="flex flex-wrap gap-2 mb-6">
                           <span
                             className={[
                               "text-xs font-medium uppercase tracking-wider px-3 py-1 border",
-                              textClass === "text-black"
-                                ? "border-black/20 text-black/80"
-                                : "border-white/25 text-white/90",
+                              chipBase,
                             ].join(" ")}
                           >
                             Release: {formatDate(album.releaseDate)}
@@ -323,20 +239,51 @@ export default function MusicPage() {
                           <span
                             className={[
                               "text-xs font-medium uppercase tracking-wider px-3 py-1 border",
-                              textClass === "text-black"
-                                ? "border-black/20 text-black/80"
-                                : "border-white/25 text-white/90",
+                              chipBase,
                             ].join(" ")}
                           >
                             Rating: {album.rating.toFixed(1)}/10
                           </span>
+                        </div>
+
+                        {/* LINKED TITLE + ARTIST (no "Open") */}
+                        {album.link ? (
+                          <a
+                            href={album.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group inline-block"
+                          >
+                            <h2 className="font-display text-5xl md:text-7xl leading-[0.9] tracking-ultra uppercase">
+                              {album.title}
+                              <span className="block">{album.artist}</span>
+                            </h2>
+                            <span className="mt-3 inline-block font-paragraph text-sm underline underline-offset-4 opacity-90 group-hover:opacity-100 transition-opacity">
+                              Listen
+                            </span>
+                          </a>
+                        ) : (
+                          <h2 className="font-display text-5xl md:text-7xl leading-[0.9] tracking-ultra uppercase">
+                            {album.title}
+                            <span className="block">{album.artist}</span>
+                          </h2>
+                        )}
+
+                        {/* NO ONE-LINER: go straight into text box */}
+                        <div className={["mt-6 border", boxBorder, "backdrop-blur-sm"].join(" ")}>
+                          <div className={["p-5 md:p-6", boxBg].join(" ")}>
+                            <div className="max-h-[200px] md:max-h-[240px] overflow-y-auto pr-4">
+                              <p className={["font-paragraph text-base md:text-lg leading-relaxed", bodyText].join(" ")}>
+                                {album.review}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Subtle divider */}
                 <div className="h-px w-full bg-black/10" />
               </div>
             );
