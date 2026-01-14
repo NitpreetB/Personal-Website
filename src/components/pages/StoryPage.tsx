@@ -14,8 +14,10 @@ export default function StoryPage() {
               I was born in Mississauga, Ontario in 2003
               </p>
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
-              ///I have one older brother, Sameep. 
-              ///My mom, Geetika, and my father, Rupinder
+              /**
+              I have one older brother, Sameep. 
+              My mom, Geetika, and my father, Rupinder
+               */
               </p>
               <p className="font-paragraph text-lg text-foreground/80">
               </p>
