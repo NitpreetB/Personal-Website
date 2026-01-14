@@ -60,7 +60,7 @@ export default function MusicPage() {
       releaseDate: "2020-03-20",
       rating: 8.6,
       review:
-        "A polished, immersive listen with sharp songwriting and a consistent visual/sonic world. It’s one of those albums where the production does half the storytelling—glossy synths, dramatic transitions, and a mood that stays coherent without feeling flat.",
+        "Review coming soon",
       link: "https://open.spotify.com/",
     },
     {
@@ -73,7 +73,7 @@ export default function MusicPage() {
       releaseDate: "2025-09-25",
       rating: 7,
       review:
-        "This album is very special to me. Standouts hit hard, but the sequencing is what makes it feel effortless: you can let it run front-to-back and it just works.",
+        "Review coming soon.",
       link: "https://open.spotify.com/",
     },
     {
@@ -86,7 +86,7 @@ export default function MusicPage() {
       releaseDate: "2025-02-21",
       rating: 7.5,
       review:
-        "A masterclass in restraint and craft. It’s playful, expensive-sounding, and intentionally paced. The best moments feel like a celebration of musicianship without losing the electronic DNA that makes it Daft Punk.",
+        "Review coming soon.",
       link: "https://open.spotify.com/",
     },
      {
@@ -99,7 +99,7 @@ export default function MusicPage() {
       releaseDate: "2024-04-26",
       rating: 10,
       review:
-        "r&b classic",
+        "R&B classic",
       link: "https://open.spotify.com/",
     },
     {
