@@ -13,6 +13,7 @@ import ActivitiesPage from '@/components/pages/ActivitiesPage';
 import MusicPage from '@/components/pages/MusicPage';
 import MoviesPage from '@/components/pages/MoviesPage';
 import BlogPage from '@/components/pages/BlogPage';
+import BookPage from '@/components/pages/BookPage';
 
 // Layout component that includes ScrollToTop
 function Layout() {
