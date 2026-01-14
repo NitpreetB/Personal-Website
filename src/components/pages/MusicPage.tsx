@@ -69,7 +69,7 @@ export default function MusicPage() {
       artist: "Zara Larsson",
       coverUrl:
         "https://shop.sonymusic.ca/cdn/shop/files/Zara_Larsson_Midnight_Sun_1500x1500_Cover.webp?v=1749065603&width=823",
-      primaryColor: "#078cbd",
+      primaryColor: "#dc8884",
       releaseDate: "2025-09-25",
       rating: 7.5,
       review:
