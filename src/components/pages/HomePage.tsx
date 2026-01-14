@@ -244,6 +244,8 @@ export default function HomePage() {
                 Mississauga, Ontario
               </h2>
               <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
+                A city that thrives on its diversity
+
                 I’m based in Mississauga — a city that sits right on the edge of
                 Toronto’s energy and opportunity, with its own quiet pockets to think,
                 build, and reset. I like the mix: fast access to tech + culture, but
@@ -259,7 +261,7 @@ export default function HomePage() {
             <div className="lg:col-span-6">
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-light-gray border border-light-gray">
                 <Image
-                  src="https://images.unsplash.com/photo-1520975958225-56b7b8d1a7c2?auto=format&fit=crop&w=1600&q=80"
+                  src="https://media.istockphoto.com/id/1083429836/photo/absolute-towers-in-mississauga-ontario-canada-night-shot.jpg?s=612x612&w=0&k=20&c=0qCqzC05UhQps7C30VkWQaSdds4FJSPET2wW8uvK7bU="
                   alt="A city scene representing Mississauga"
                   width={1600}
                   className="w-full h-full object-cover"
