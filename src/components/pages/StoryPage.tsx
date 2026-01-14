@@ -14,11 +14,10 @@ export default function StoryPage() {
               I was born in Mississauga, Ontario in 2003
               </p>
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
-              I have one older brother, Sameep. 
-              My mom, Geetika, and my father, Rupinder
+              ///I have one older brother, Sameep. 
+              ///My mom, Geetika, and my father, Rupinder
               </p>
               <p className="font-paragraph text-lg text-foreground/80">
-              I’m currently a Mechatronics Engineering student at the University of Waterloo. I chose engineering because I’ve always been interested in how things work — not just in theory, but in practice. Over time, that curiosity pulled me toward data, machine learning, and systems that sit at the intersection of software and the real world.
               </p>
             </div>
           </div>
