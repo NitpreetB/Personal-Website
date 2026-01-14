@@ -184,6 +184,22 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+                <section className="w-full py-32 px-[5%] max-w-[120rem] mx-auto bg-light-gray/30">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-3">
+              <span className="sticky top-32 block font-paragraph text-xs font-bold uppercase tracking-widest text-secondary">
+                01 / Story
+              </span>
+            </div>
+            <div className="md:col-span-8 md:col-start-5">
+              <p className="font-paragraph text-xl md:text-2xl leading-relaxed text-dark-gray">
+                In a world of noise, clarity is the ultimate sophistication. My approach to engineering is rooted in first principles—stripping away the non-essential to reveal the core logic of a problem. Whether architecting a data pipeline or training a neural network, I strive for solutions that are robust, scalable, and elegantly simple.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <SectionDivider />
         {/* --- PROJECTS SECTION (Sticky Sidebar Layout) --- */}
         <SectionDivider />
