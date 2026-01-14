@@ -245,11 +245,6 @@ export default function HomePage() {
               </h2>
               <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
                 A city that thrives on its diversity
-
-                I’m based in Mississauga — a city that sits right on the edge of
-                Toronto’s energy and opportunity, with its own quiet pockets to think,
-                build, and reset. I like the mix: fast access to tech + culture, but
-                enough space to stay focused.
               </p>
               <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
                 If you’re ever in the area, you’ll probably find me working out of a
