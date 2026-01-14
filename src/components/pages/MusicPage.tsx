@@ -83,8 +83,8 @@ export default function MusicPage() {
       coverUrl:
         "https://m.media-amazon.com/images/I/81R1bBXjfZL._US972_BO54,255,255,255_FMjpg_QL100_.jpg",
       primaryColor: "#b89776",
-      releaseDate: "2013-05-17",
-      rating: 9.1,
+      releaseDate: "2025-02-21",
+      rating: 85,
       review:
         "A masterclass in restraint and craft. It’s playful, expensive-sounding, and intentionally paced. The best moments feel like a celebration of musicianship without losing the electronic DNA that makes it Daft Punk.",
       link: "https://open.spotify.com/",
