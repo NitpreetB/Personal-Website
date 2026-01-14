@@ -3,18 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Image } from "@/components/ui/image";
 
-/**
- * Updates per your request:
- * ✅ Release + Rating chips moved to the TOP (and removed redundant meta line)
- * ✅ Removed "Open" link
- * ✅ Album title + artist are the link
- * ✅ Removed one-liner blurb (go straight into the review textbox)
- * ✅ Keeps alternating left/right layout + section primaryColor background
- * ✅ Keeps global sorting by Release Date / Rating
- *
- * Font:
- * - Uses `font-display` for the big condensed headers (Anton recommended)
- */
 
 type Album = {
   id: string;
@@ -89,11 +77,11 @@ export default function MusicPage() {
       link: "https://open.spotify.com/",
     },
     {
-      id: "ram",
-      title: "Random Access Memories",
-      artist: "Daft Punk",
+      id: "sctw",
+      title: "So Close To What",
+      artist: "Tate McRae",
       coverUrl:
-        "https://i.scdn.co/image/ab67616d0000b273b9b6b63a9d6d1fda3e64d9b7",
+        "https://m.media-amazon.com/images/I/81R1bBXjfZL._US972_BO54,255,255,255_FMjpg_QL100_.jpg",
       primaryColor: "#F9A825",
       releaseDate: "2013-05-17",
       rating: 9.1,
