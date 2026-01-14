@@ -52,7 +52,7 @@ export default function MoviesPage() {
         "https://m.media-amazon.com/images/I/61luAu5kqTL._AC_UF894,1000_QL80_.jpg",
       accentColor: "#DC2626",
       review:
-        "Excessive, iconic, and unapologetic. Scarface is less about realism and more about ambition spiraling out of control — loud, messy, and unforgettable.",
+        "Review coming soon.",
       link: "https://www.imdb.com/title/tt0086250/",
     },
     {
@@ -66,7 +66,7 @@ export default function MoviesPage() {
         "https://m.media-amazon.com/images/I/71c05lTE03L._AC_SL1200_.jpg",
       accentColor: "#FACC15",
       review:
-        "Stylish without trying to be slick. The structure, dialogue, and performances make it endlessly rewatchable — every scene feels deliberate and sharp.",
+        "Review coming soon.",
       link: "https://www.imdb.com/title/tt0110912/",
     },
   ];
