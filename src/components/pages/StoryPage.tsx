@@ -14,10 +14,11 @@ export default function StoryPage() {
               I was born in Mississauga, Ontario in 2003
               </p>
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
-                Every journey has a beginning, and mine started with a passion for learning and creating. Over the years, I've had the opportunity to work on diverse projects, collaborate with talented individuals, and continuously grow both personally and professionally.
+              I have one older brother, Sameep. 
+              My mom, Geetika, and my father, Rupinder
               </p>
               <p className="font-paragraph text-lg text-foreground/80">
-                This page is a reflection of my experiences, values, and the lessons I've learned along the way. Thank you for taking the time to learn more about my story.
+              I’m currently a Mechatronics Engineering student at the University of Waterloo. I chose engineering because I’ve always been interested in how things work — not just in theory, but in practice. Over time, that curiosity pulled me toward data, machine learning, and systems that sit at the intersection of software and the real world.
               </p>
             </div>
           </div>
