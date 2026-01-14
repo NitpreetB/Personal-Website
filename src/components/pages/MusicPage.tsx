@@ -67,7 +67,7 @@ export default function MusicPage() {
       title: "After Hours",
       artist: "The Weeknd",
       coverUrl:
-        "https://i.scdn.co/image/ab67616d0000b2730a9c1c6e7d3d4f3cdb1d5b1d",
+        "https://preview.redd.it/yn81w7k64vh41.jpg?width=1080&crop=smart&auto=webp&s=86eb7af0663416adb8d62ad7024fd21907c85fda",
       primaryColor: "#B71C1C",
       releaseDate: "2020-03-20",
       rating: 8.6,
