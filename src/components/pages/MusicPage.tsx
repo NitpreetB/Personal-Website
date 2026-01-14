@@ -82,7 +82,7 @@ export default function MusicPage() {
       artist: "Tate McRae",
       coverUrl:
         "https://m.media-amazon.com/images/I/81R1bBXjfZL._US972_BO54,255,255,255_FMjpg_QL100_.jpg",
-      primaryColor: "#F9A825",
+      primaryColor: "#b89776",
       releaseDate: "2013-05-17",
       rating: 9.1,
       review:
