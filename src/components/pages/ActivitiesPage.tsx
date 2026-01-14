@@ -11,10 +11,9 @@ export default function ActivitiesPage() {
             <h1 className="font-heading text-5xl md:text-6xl mb-12 text-foreground">Activities</h1>
             <div className="prose prose-lg max-w-none">
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
-                Discover the activities, hobbies, and interests that I'm passionate about.
+              Activities coming soon.
               </p>
               <p className="font-paragraph text-lg text-foreground/80">
-                From sports to creative pursuits, this is where I share what keeps me active and engaged.
               </p>
             </div>
           </div>
