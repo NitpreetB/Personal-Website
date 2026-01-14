@@ -45,7 +45,7 @@ export default function Header() {
           to="/" 
           className="font-heading text-xl font-bold text-foreground hover:text-accent transition-colors duration-300"
         >
-          Portfolio
+          Home
         </Link>
 
         {/* Desktop Navigation */}
