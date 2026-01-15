@@ -326,8 +326,7 @@ export default function HomePage() {
               Blog
             </h2>
             <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
-              I write about building systems, learning in public, and the small lessons
-              that compound. Mostly practical notes — occasionally a deep dive.
+              Blog coming soon.
             </p>
 
             <div>
