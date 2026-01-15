@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -9,7 +10,6 @@ type Project = {
   title: string;
   shortDescription: string;
   tags: string[];
-  link?: string; // github / demo / writeup
 };
 
 export default function ProjectsPage() {
@@ -21,7 +21,6 @@ export default function ProjectsPage() {
         shortDescription:
           "Spam vs. not-spam classifier using TF-IDF + Multinomial Naive Bayes, with a Streamlit app for real-time detection and retraining.",
         tags: ["Python", "scikit-learn", "NLP", "TF-IDF", "Streamlit", "NLTK"],
-        link: "https://github.com/NitpreetB/spam-classifier",
       },
       {
         id: "lane-detection-system",
@@ -50,21 +49,20 @@ export default function ProjectsPage() {
         shortDescription:
           "Deep Q-Network framework to play Chrome Dino using automated keyboard control and OCR to detect ‘game over’ and restart training epochs.",
         tags: ["Reinforcement Learning", "DQN", "Python", "OCR", "PyTesseract"],
-        link: "https://github.com/NitpreetB/Dino",
       },
       {
         id: "sorting-visualizer",
         title: "Sorting Visualizer",
         shortDescription:
-          "Interactive Python visualizer for classic sorting algorithms (bubble, insertion, etc.) using OOP + generators for step-by-step animation.",
+          "Interactive Python visualizer for classic sorting algorithms using OOP + generators for step-by-step animation.",
         tags: ["Python", "Algorithms", "Visualization", "OOP"],
       },
       {
         id: "pocketwatch",
         title: "PocketWatch",
         shortDescription:
-          "Expense tracking web app built with React + HTML/CSS, including spending limits and Syncfusion spreadsheet export for transaction logs.",
-        tags: ["React", "JavaScript", "HTML/CSS", "API Integration", "Syncfusion"],
+          "Expense tracking web app built with React, including spending limits and spreadsheet-style transaction exports.",
+        tags: ["React", "JavaScript", "HTML/CSS", "API Integration"],
       },
     ],
     []
@@ -86,80 +84,56 @@ export default function ProjectsPage() {
           </h1>
           <p className="font-paragraph text-lg md:text-xl text-secondary max-w-3xl">
             A curated collection of projects across machine learning, computer vision,
-            robotics, and web development.
+            robotics, and full-stack development.
           </p>
         </motion.div>
 
         <div className="space-y-6 min-h-[600px]">
-          {projects.length > 0 ? (
-            projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-              >
-                <div className="block group py-12 border-b border-light-gray hover:border-foreground transition-colors duration-300">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                    <div className="flex-1">
-                      <h2 className="font-heading text-2xl md:text-3xl mb-4 text-foreground group-hover:text-accent transition-colors duration-300">
-                        {project.title}
-                      </h2>
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+            >
+              <div className="group py-12 border-b border-light-gray hover:border-foreground transition-colors duration-300">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                  <div className="flex-1">
+                    <h2 className="font-heading text-2xl md:text-3xl mb-4 text-foreground group-hover:text-accent transition-colors duration-300">
+                      {project.title}
+                    </h2>
 
-                      <p className="font-paragraph text-base md:text-lg text-secondary mb-6 max-w-3xl">
-                        {project.shortDescription}
-                      </p>
+                    <p className="font-paragraph text-base md:text-lg text-secondary mb-6 max-w-3xl">
+                      {project.shortDescription}
+                    </p>
 
-                      <div className="flex flex-wrap gap-3">
-                        {project.tags.map((tag, i) => (
-                          <span
-                            key={i}
-                            className="font-paragraph text-sm text-secondary px-4 py-2 border border-light-gray"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      {project.link ? (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-colors duration-300"
+                    <div className="flex flex-wrap gap-3">
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="font-paragraph text-sm text-secondary px-4 py-2 border border-light-gray"
                         >
-                          <span className="font-paragraph text-sm uppercase tracking-wider">
-                            View Link
-                          </span>
-                          <ExternalLink className="w-5 h-5" />
-                        </a>
-                      ) : (
-                        <div className="inline-flex items-center gap-2 text-foreground/70">
-                          <span className="font-paragraph text-sm uppercase tracking-wider">
-                            No Link
-                          </span>
-                        </div>
-                      )}
-
-                      <div className="flex items-center gap-2 text-foreground/70">
-                        <span className="font-paragraph text-sm uppercase tracking-wider">
-                          Details
+                          {tag}
                         </span>
-                        <ArrowRight className="w-5 h-5" />
-                      </div>
+                      ))}
                     </div>
                   </div>
+
+                  {/* DETAILS LINK */}
+                  <Link
+                    to={`/projects/${project.id}`}
+                    className="inline-flex items-center gap-2 text-foreground/70 hover:text-accent transition-colors duration-300"
+                  >
+                    <span className="font-paragraph text-sm uppercase tracking-wider">
+                      Details
+                    </span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
                 </div>
-              </motion.div>
-            ))
-          ) : (
-            <p className="font-paragraph text-lg text-secondary py-20">
-              No projects available.
-            </p>
-          )}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </main>
 
