@@ -1,46 +1,74 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { BaseCrudService } from '@/integrations';
-import { Projects } from '@/entities';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
+import { useMemo } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+type Project = {
+  id: string;
+  title: string;
+  shortDescription: string;
+  tags: string[];
+  link?: string; // github / demo / writeup
+};
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Projects[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasNext, setHasNext] = useState(false);
-  const [skip, setSkip] = useState(0);
-  const pageSize = 10;
-
-  useEffect(() => {
-    loadProjects();
-  }, [skip]);
-
-  const loadProjects = async () => {
-    try {
-      setIsLoading(true);
-      const result = await BaseCrudService.getAll<Projects>('projects', {}, { limit: pageSize, skip });
-      
-      if (skip === 0) {
-        setProjects(result.items);
-      } else {
-        setProjects(prev => [...prev, ...result.items]);
-      }
-      
-      setHasNext(result.hasNext);
-    } catch (error) {
-      console.error('Error loading projects:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const loadMore = () => {
-    setSkip(prev => prev + pageSize);
-  };
+  const projects: Project[] = useMemo(
+    () => [
+      {
+        id: "fraud-message-classifier",
+        title: "Fraud Message Classifier",
+        shortDescription:
+          "Spam vs. not-spam classifier using TF-IDF + Multinomial Naive Bayes, with a Streamlit app for real-time detection and retraining.",
+        tags: ["Python", "scikit-learn", "NLP", "TF-IDF", "Streamlit", "NLTK"],
+        link: "https://github.com/NitpreetB/spam-classifier",
+      },
+      {
+        id: "lane-detection-system",
+        title: "Lane Detection System",
+        shortDescription:
+          "Real-time lane detection pipeline using OpenCV with bird’s-eye perspective transform, dynamic HSV thresholding, and sliding-window tracking.",
+        tags: ["Python", "OpenCV", "Computer Vision", "Perspective Transform"],
+      },
+      {
+        id: "active-ball-balancing-stewart-platform",
+        title: "Active Ball Balancing Stewart Platform",
+        shortDescription:
+          "3-leg Stewart platform that tracks and balances a ball using OpenCV-based position detection and a PID controller for real-time servo control.",
+        tags: ["OpenCV", "Controls", "PID", "Robotics", "Raspberry Pi"],
+      },
+      {
+        id: "detectme",
+        title: "DetectME",
+        shortDescription:
+          "Sports analysis tool combining YOLOv5 + MediaPipe for object + pose detection, plus OpenCV ball tracking to estimate optimal release angles.",
+        tags: ["YOLOv5", "MediaPipe", "OpenCV", "Flask", "Pose Estimation"],
+      },
+      {
+        id: "dinoio",
+        title: "DINOio",
+        shortDescription:
+          "Deep Q-Network framework to play Chrome Dino using automated keyboard control and OCR to detect ‘game over’ and restart training epochs.",
+        tags: ["Reinforcement Learning", "DQN", "Python", "OCR", "PyTesseract"],
+        link: "https://github.com/NitpreetB/Dino",
+      },
+      {
+        id: "sorting-visualizer",
+        title: "Sorting Visualizer",
+        shortDescription:
+          "Interactive Python visualizer for classic sorting algorithms (bubble, insertion, etc.) using OOP + generators for step-by-step animation.",
+        tags: ["Python", "Algorithms", "Visualization", "OOP"],
+      },
+      {
+        id: "pocketwatch",
+        title: "PocketWatch",
+        shortDescription:
+          "Expense tracking web app built with React + HTML/CSS, including spending limits and Syncfusion spreadsheet export for transaction logs.",
+        tags: ["React", "JavaScript", "HTML/CSS", "API Integration", "Syncfusion"],
+      },
+    ],
+    []
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -57,72 +85,82 @@ export default function ProjectsPage() {
             All Projects
           </h1>
           <p className="font-paragraph text-lg md:text-xl text-secondary max-w-3xl">
-            A comprehensive collection of technical projects, case studies, and experiments. 
-            Each project represents a unique challenge and learning opportunity.
+            A curated collection of projects across machine learning, computer vision,
+            robotics, and web development.
           </p>
         </motion.div>
 
         <div className="space-y-6 min-h-[600px]">
-          {isLoading && skip === 0 ? null : projects.length > 0 ? (
+          {projects.length > 0 ? (
             projects.map((project, index) => (
               <motion.div
-                key={project._id}
+                key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Link
-                  to={`/projects/${project._id}`}
-                  className="block group py-12 border-b border-light-gray hover:border-foreground transition-colors duration-300"
-                >
+                <div className="block group py-12 border-b border-light-gray hover:border-foreground transition-colors duration-300">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                     <div className="flex-1">
                       <h2 className="font-heading text-2xl md:text-3xl mb-4 text-foreground group-hover:text-accent transition-colors duration-300">
                         {project.title}
                       </h2>
+
                       <p className="font-paragraph text-base md:text-lg text-secondary mb-6 max-w-3xl">
                         {project.shortDescription}
                       </p>
-                      {project.tags && (
-                        <div className="flex flex-wrap gap-3">
-                          {project.tags.split(',').map((tag, i) => (
-                            <span
-                              key={i}
-                              className="font-paragraph text-sm text-secondary px-4 py-2 border border-light-gray"
-                            >
-                              {tag.trim()}
-                            </span>
-                          ))}
+
+                      <div className="flex flex-wrap gap-3">
+                        {project.tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className="font-paragraph text-sm text-secondary px-4 py-2 border border-light-gray"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      {project.link ? (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-colors duration-300"
+                        >
+                          <span className="font-paragraph text-sm uppercase tracking-wider">
+                            View Link
+                          </span>
+                          <ExternalLink className="w-5 h-5" />
+                        </a>
+                      ) : (
+                        <div className="inline-flex items-center gap-2 text-foreground/70">
+                          <span className="font-paragraph text-sm uppercase tracking-wider">
+                            No Link
+                          </span>
                         </div>
                       )}
-                    </div>
-                    <div className="flex items-center gap-2 text-foreground group-hover:text-accent transition-colors duration-300">
-                      <span className="font-paragraph text-sm uppercase tracking-wider">View Project</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+
+                      <div className="flex items-center gap-2 text-foreground/70">
+                        <span className="font-paragraph text-sm uppercase tracking-wider">
+                          Details
+                        </span>
+                        <ArrowRight className="w-5 h-5" />
+                      </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               </motion.div>
             ))
           ) : (
-            <p className="font-paragraph text-lg text-secondary py-20">No projects available.</p>
+            <p className="font-paragraph text-lg text-secondary py-20">
+              No projects available.
+            </p>
           )}
         </div>
-
-        {hasNext && (
-          <div className="mt-20 text-center">
-            <Button
-              onClick={loadMore}
-              variant="outline"
-              size="lg"
-              disabled={isLoading}
-              className="border-foreground text-foreground hover:bg-foreground hover:text-background"
-            >
-              {isLoading ? 'Loading...' : 'Load More Projects'}
-            </Button>
-          </div>
-        )}
       </main>
 
       <Footer />
