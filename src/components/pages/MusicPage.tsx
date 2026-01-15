@@ -42,10 +42,19 @@ function subtleOverlayClass(hex: string) {
 }
 
 function formatDate(dateStr: string) {
-  const d = new Date(dateStr);
-  if (Number.isNaN(d.getTime())) return dateStr;
-  return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  const [y, m, d] = dateStr.split("-").map(Number);
+  if (!y || !m || !d) return dateStr;
+
+  // Create a LOCAL date (no UTC shift)
+  const local = new Date(y, m - 1, d);
+
+  return local.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 }
+
 
 export default function MusicPage() {
   // --- Replace with your real albums ---
@@ -135,7 +144,7 @@ export default function MusicPage() {
       coverUrl:
         "https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2F1587028290f87090ed228ed739522844.1000x1000x1.png",
       primaryColor: "#ada25f",
-      releaseDate: "2025-10-25",
+      releaseDate: "2025-10-24",
       rating: 7.5,
       review:
         "This is God's plan, he said it to me",
