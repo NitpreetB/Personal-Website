@@ -219,7 +219,7 @@ export default function HomePage() {
             </p>
 
             <div>
-              <Link to="/about">
+              <Link to="/story">
                 <Button
                   variant="outline"
                   size="lg"
