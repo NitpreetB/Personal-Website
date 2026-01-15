@@ -150,6 +150,19 @@ export default function MusicPage() {
         "This is God's plan, he said it to me",
       link: "https://open.spotify.com/",
     },
+    {
+      id: "SD",
+      title: "Split Decision",
+      artist: "Dave & Central Cee",
+      coverUrl:
+        "https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2Fead251f5ac0af2956c25a6e935e0aaf3.1000x1000x1.png",
+      primaryColor: "#ae2627",
+      releaseDate: "2023-06-05",
+      rating: 10,
+      review:
+        "Forces from the UK",
+      link: "https://open.spotify.com/",
+    },
 
 
     
