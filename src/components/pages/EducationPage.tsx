@@ -37,9 +37,7 @@ export default function EducationPage() {
                 </div>
 
                 <p className="mt-4 font-paragraph text-base text-foreground/80 leading-relaxed">
-                  Mechatronics Engineering, with a specialization in Artificial Intelligence
-                  and Machine Learning. Coursework and projects focused on machine learning,
-                  computer vision, control systems, robotics, and large-scale data systems.
+                  Honours in Mechatronics Engineering
                 </p>
               </div>
             </div>
