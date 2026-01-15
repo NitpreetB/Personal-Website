@@ -109,8 +109,7 @@ export default function BooksPage() {
             <div className="max-w-6xl mx-auto">
               <h1 className="font-heading text-5xl md:text-6xl">Books</h1>
               <p className="mt-4 font-paragraph text-lg text-white/75 max-w-3xl">
-                A small personal shelf — covers, quick context, and a focused note.
-                Filter by genre or reading status, then sort by year or rating.
+                Personal bookshelf
               </p>
 
               {/* Controls */}
