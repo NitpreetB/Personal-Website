@@ -120,29 +120,30 @@ export default function HomePage() {
   const heroOpacity = useTransform(heroScroll, [0, 0.8], [1, 0]);
 
   // --- Reviews data (edit these) ---
-  const albumReviews = [
+  const reviewLinks = [
     {
-      title: "Album One",
+      title: "Music",
+      to: "/music",
       cover:
         "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80",
-      rating: "9.2/10",
-      blurb: "Precision production, no filler, insane replay value.",
+      blurb: "Albums I’m looping + quick ratings.",
     },
     {
-      title: "Album Two",
+      title: "Movies",
+      to: "/movies",
       cover:
-        "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1200&q=80",
-      rating: "8.4/10",
-      blurb: "Big hooks with a moody edge — the sequencing is perfect.",
+        "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1200&q=80",
+      blurb: "Favorite films + short reviews.",
     },
     {
-      title: "Album Three",
+      title: "Books",
+      to: "/books",
       cover:
-        "https://images.unsplash.com/photo-1521336575822-6da63fb45455?auto=format&fit=crop&w=1200&q=80",
-      rating: "7.9/10",
-      blurb: "A bold concept album that sticks the landing.",
+        "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
+      blurb: "What I’m reading + notes worth keeping.",
     },
   ];
+
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-accent selection:text-white overflow-x-hidden">
@@ -268,46 +269,43 @@ export default function HomePage() {
 
         <SectionDivider />
 
-        {/* --- REVIEWS SECTION (3 album covers + rating + one-liner) --- */}
-        <SectionShell label="04 / Reviews" className="bg-background">
-          <div className="space-y-10">
-            <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
-              A small corner where I rate albums I’m looping. Short notes, no essays.
-            </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {reviewLinks.map((item, idx) => (
+        <Link key={idx} to={item.to} className="group block">
+          <div className="relative w-full aspect-square overflow-hidden bg-light-gray border border-light-gray">
+            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500 z-10" />
+            <motion.div
+              className="w-full h-full"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <Image
+                src={item.cover}
+                alt={`${item.title} preview`}
+                width={1200}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {albumReviews.map((a, idx) => (
-                <div key={idx} className="group">
-                  <div className="relative w-full aspect-square overflow-hidden bg-light-gray border border-light-gray">
-                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500 z-10" />
-                    <motion.div
-                      className="w-full h-full"
-                      whileHover={{ scale: 1.04 }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
-                    >
-                      <Image
-                        src={a.cover}
-                        alt={`${a.title} cover`}
-                        width={1200}
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  </div>
+          <div className="mt-5">
+            <div className="flex items-baseline justify-between gap-4">
+              <h3 className="font-heading text-xl font-bold group-hover:text-accent transition-colors">
+                {item.title}
+              </h3>
 
-                  <div className="mt-5">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-heading text-xl font-bold">{a.title}</h3>
-                      <span className="font-paragraph text-sm uppercase tracking-widest text-secondary">
-                        {a.rating}
-                      </span>
-                    </div>
-                    <p className="mt-2 font-paragraph text-base text-dark-gray">
-                      {a.blurb}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              <span className="font-paragraph text-sm uppercase tracking-widest text-secondary inline-flex items-center gap-2">
+                Open <ArrowRight className="w-4 h-4" />
+              </span>
             </div>
+
+            <p className="mt-2 font-paragraph text-base text-dark-gray">
+              {item.blurb}
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
 
             {/* Optional: link to a dedicated reviews page later */}
             {/* <div>
