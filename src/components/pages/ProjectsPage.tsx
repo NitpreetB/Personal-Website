@@ -83,8 +83,7 @@ export default function ProjectsPage() {
             All Projects
           </h1>
           <p className="font-paragraph text-lg md:text-xl text-secondary max-w-3xl">
-            A curated collection of projects across machine learning, computer vision,
-            robotics, and full-stack development.
+            A curated collection of projects.
           </p>
         </motion.div>
 
