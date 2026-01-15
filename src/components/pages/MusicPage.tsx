@@ -128,6 +128,22 @@ export default function MusicPage() {
         "This is a warning: Your time is up",
       link: "https://open.spotify.com/",
     },
+    {
+      id: "TBWPTH",
+      title: "The Boy Who Played the Harp",
+      artist: "Dave",
+      coverUrl:
+        "https://t2.genius.com/unsafe/881x0/https%3A%2F%2Fimages.genius.com%2F1587028290f87090ed228ed739522844.1000x1000x1.png",
+      primaryColor: "#ada25f",
+      releaseDate: "2025-10-24",
+      rating: 7.5,
+      review:
+        "This is God's plan, he said it to me",
+      link: "https://open.spotify.com/",
+    },
+
+
+    
 
   ];
 
