@@ -11,7 +11,7 @@ export default function BlogPage() {
             <h1 className="font-heading text-5xl md:text-6xl mb-12 text-foreground">Blog</h1>
             <div className="prose prose-lg max-w-none">
               <p className="font-paragraph text-lg text-foreground/80 mb-6">
-                Blogs Coming soon
+                Blog Coming soon
               </p>
               <p className="font-paragraph text-lg text-foreground/80">
           
