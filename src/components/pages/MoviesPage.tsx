@@ -121,8 +121,7 @@ export default function MoviesPage() {
             <div className="max-w-6xl mx-auto">
               <h1 className="font-heading text-5xl md:text-6xl">Movies</h1>
               <p className="mt-4 font-paragraph text-lg text-white/75 max-w-3xl">
-                Reviews with a cinematic layout: posters, quick stats, and a focused write-up.
-                Filter by genre, then sort by year or rating.
+                A curated collection of films, rated and revisited over time.
               </p>
 
               {/* Controls */}
