@@ -215,9 +215,7 @@ export default function HomePage() {
         <SectionShell label="01 / About" className="bg-background">
           <div className="space-y-10">
             <p className="font-paragraph text-xl md:text-2xl leading-relaxed text-dark-gray">
-              I’m Nitpreet — I build data products and intelligent systems end-to-end,
-              from messy real-world data to shipped experiences. I care about
-              simplicity, correctness, and results you can actually measure.
+              I'm a 4B Mechatronics Engineering student at the University of Waterloo. 
             </p>
 
             <div>
