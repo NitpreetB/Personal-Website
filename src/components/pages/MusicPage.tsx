@@ -165,7 +165,7 @@ export default function MusicPage() {
           <div className="max-w-6xl mx-auto">
             <h1 className="font-heading text-5xl md:text-6xl text-foreground">Music</h1>
             <p className="mt-4 font-paragraph text-lg text-foreground/70 max-w-3xl">
-              Albums I keep coming back to. Sort by release date or rating.
+              A curated collection of albums, rated and revisited over time.
             </p>
 
             <div className="mt-8 flex flex-col md:flex-row md:items-end gap-4">
