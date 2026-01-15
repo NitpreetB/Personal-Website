@@ -56,7 +56,6 @@ const SectionShell = ({
 // --- Main Component ---
 
 export default function HomePage() {
-  // 1. Data Fidelity Protocol: Canonize & Preserve
   const [projects, setProjects] = useState<Projects[]>([]);
   const [experience, setExperience] = useState<Experience[]>([]);
   const [skills, setSkills] = useState<Skills[]>([]);
@@ -73,6 +72,7 @@ export default function HomePage() {
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = async () => {
@@ -87,6 +87,7 @@ export default function HomePage() {
       ]);
 
       setProjects(projectsResult.items);
+
       setExperience(
         experienceResult.items.sort((a, b) => {
           const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
@@ -94,6 +95,7 @@ export default function HomePage() {
           return dateB - dateA;
         })
       );
+
       setSkills(skillsResult.items);
     } catch (error) {
       console.error("Error loading data:", error);
@@ -111,7 +113,7 @@ export default function HomePage() {
   }, {} as Record<string, Skills[]>);
 
   // --- Animation Refs ---
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLElement | null>(null);
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -119,7 +121,7 @@ export default function HomePage() {
   const heroY = useTransform(heroScroll, [0, 1], ["0%", "50%"]);
   const heroOpacity = useTransform(heroScroll, [0, 0.8], [1, 0]);
 
-  // --- Reviews data (edit these) ---
+  // --- Reviews data ---
   const reviewLinks = [
     {
       title: "Music",
@@ -144,7 +146,6 @@ export default function HomePage() {
     },
   ];
 
-
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-accent selection:text-white overflow-x-hidden">
       {/* Global Scroll Progress */}
@@ -153,8 +154,9 @@ export default function HomePage() {
         style={{ scaleX }}
       />
       <Header />
+
       <main className="w-full relative">
-        {/* Optional Grid Overlay for "Zen Grid" feel */}
+        {/* Optional Grid Overlay */}
         {/* <GridOverlay /> */}
 
         {/* --- HERO SECTION --- */}
@@ -173,7 +175,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="font-heading text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter font-bold text-foreground uppercase"
               >
-                {"Nitpreet Bamra"}
+                Nitpreet Bamra
               </motion.h1>
             </div>
 
@@ -183,7 +185,8 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 className="font-paragraph text-2xl md:text-3xl lg:text-4xl leading-tight text-foreground font-light"
-              > Engineer · Analyst · Student
+              >
+                Engineer · Analyst · Student
               </motion.p>
 
               <motion.div
@@ -192,7 +195,7 @@ export default function HomePage() {
                 transition={{ duration: 1, delay: 0.8 }}
                 className="mt-12 flex gap-6"
               >
-
+                {/* add hero buttons here if you want */}
               </motion.div>
             </div>
           </motion.div>
@@ -212,11 +215,11 @@ export default function HomePage() {
 
         <SectionDivider />
 
-        {/* --- ABOUT ME (teaser + button to About page) --- */}
+        {/* --- ABOUT --- */}
         <SectionShell label="01 / About" className="bg-background">
           <div className="space-y-10">
             <p className="font-paragraph text-xl md:text-2xl leading-relaxed text-dark-gray">
-              I'm a 4B Mechatronics Engineering student at the University of Waterloo. 
+              I'm a 4B Mechatronics Engineering student at the University of Waterloo.
             </p>
 
             <div>
@@ -235,7 +238,7 @@ export default function HomePage() {
 
         <SectionDivider />
 
-        {/* --- MISSISSAUGA SECTION (text + photo) --- */}
+        {/* --- HOME BASE --- */}
         <SectionShell label="03 / Home Base" className="bg-light-gray/30">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-6 space-y-6">
@@ -245,9 +248,7 @@ export default function HomePage() {
               <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
                 A city that thrives on it's own diversity and culture
               </p>
-              <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
-       
-              </p>
+              <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray"></p>
             </div>
 
             <div className="lg:col-span-6">
@@ -269,58 +270,56 @@ export default function HomePage() {
 
         <SectionDivider />
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {reviewLinks.map((item, idx) => (
-        <Link key={idx} to={item.to} className="group block">
-          <div className="relative w-full aspect-square overflow-hidden bg-light-gray border border-light-gray">
-            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500 z-10" />
-            <motion.div
-              className="w-full h-full"
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <Image
-                src={item.cover}
-                alt={`${item.title} preview`}
-                width={1200}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </div>
-
-          <div className="mt-5">
-            <div className="flex items-baseline justify-between gap-4">
-              <h3 className="font-heading text-xl font-bold group-hover:text-accent transition-colors">
-                {item.title}
-              </h3>
-
-              <span className="font-paragraph text-sm uppercase tracking-widest text-secondary inline-flex items-center gap-2">
-                Open <ArrowRight className="w-4 h-4" />
-              </span>
-            </div>
-
-            <p className="mt-2 font-paragraph text-base text-dark-gray">
-              {item.blurb}
+        {/* ✅ --- REVIEWS SECTION (FIXED) --- */}
+        <SectionShell label="04 / Reviews" className="bg-background">
+          <div className="space-y-10">
+            <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
+              A small corner where I rate albums I’m looping. Short notes, no essays.
             </p>
-          </div>
-        </Link>
-      ))}
-    </div>
 
-            {/* Optional: link to a dedicated reviews page later */}
-            {/* <div>
-              <Link to="/reviews">
-                <Button variant="outline" size="lg" className="rounded-none ...">
-                  See All Reviews <ArrowRight className="ml-3 w-5 h-5" />
-                </Button>
-              </Link>
-            </div> */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {reviewLinks.map((item, idx) => (
+                <Link key={idx} to={item.to} className="group block">
+                  <div className="relative w-full aspect-square overflow-hidden bg-light-gray border border-light-gray">
+                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500 z-10" />
+                    <motion.div
+                      className="w-full h-full"
+                      whileHover={{ scale: 1.04 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    >
+                      <Image
+                        src={item.cover}
+                        alt={`${item.title} preview`}
+                        width={1200}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  </div>
+
+                  <div className="mt-5">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="font-heading text-xl font-bold group-hover:text-accent transition-colors">
+                        {item.title}
+                      </h3>
+
+                      <span className="font-paragraph text-sm uppercase tracking-widest text-secondary inline-flex items-center gap-2">
+                        Open <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+
+                    <p className="mt-2 font-paragraph text-base text-dark-gray">
+                      {item.blurb}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </SectionShell>
 
         <SectionDivider />
 
-        {/* --- BLOG SECTION (link to blog page) --- */}
+        {/* --- BLOG --- */}
         <SectionShell label="05 / Writing" className="bg-light-gray/30">
           <div className="space-y-10">
             <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight">
@@ -347,12 +346,11 @@ export default function HomePage() {
 
         <SectionDivider />
 
-        {/* --- PROJECTS SECTION PLACEHOLDER (keep your existing implementation here) --- */}
-        {/* Example anchor so your hero button works */}
-  
+        {/* (Your projects section can go here) */}
 
         <SectionDivider />
       </main>
+
       <Footer />
     </div>
   );
@@ -360,7 +358,7 @@ export default function HomePage() {
 
 // --- Sub-Components ---
 
-function ProjectCard({ project }: { project: Projects; index: number }) {
+function ProjectCard({ project, index }: { project: Projects; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -372,11 +370,10 @@ function ProjectCard({ project }: { project: Projects; index: number }) {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.05 }}
       className="group block"
     >
       <Link to={`/projects/${project._id}`} className="block">
-        {/* Image Container with Parallax/Scale Effect on Hover */}
         <div className="relative w-full aspect-[16/9] overflow-hidden bg-light-gray mb-8">
           <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-500 z-10" />
           <motion.div
@@ -395,13 +392,11 @@ function ProjectCard({ project }: { project: Projects; index: number }) {
             />
           </motion.div>
 
-          {/* Floating Action Button */}
           <div className="absolute bottom-0 right-0 bg-background p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20 border-t border-l border-light-gray">
             <ArrowRight className="w-8 h-8 text-foreground" />
           </div>
         </div>
 
-        {/* Content */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           <div className="md:col-span-8">
             <h3 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors">
