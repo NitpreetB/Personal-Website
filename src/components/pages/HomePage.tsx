@@ -274,7 +274,7 @@ export default function HomePage() {
         <SectionShell label="04 / Reviews" className="bg-background">
           <div className="space-y-10">
             <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray">
-              A small corner where I rate albums I’m looping. Short notes, no essays.
+              See what i like and what i dont.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
