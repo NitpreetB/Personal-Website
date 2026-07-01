@@ -1,42 +1,21 @@
 {
-  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "rootDir": ".",
-    "baseUrl": ".",
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": false,
-    "noImplicitAny": false,
-    "strict": false,
-    "allowUnusedLabels": true,
-    "allowUnreachableCode": true,
-    "verbatimModuleSyntax": false,
+    "strict": true,
+    "noEmit": true,
     "skipLibCheck": true,
-    "noUncheckedIndexedAccess": false,
-    "exactOptionalPropertyTypes": false,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/integrations/*": [
-        "integrations/*",
-      ],
-      "@/integrations": [
-        "integrations"
-      ],
-      "@wix/codegen-framework-packages": [
-        "integrations"
-      ],
-    }
+      "@/*": ["src/*"]
+    },
+    "types": ["vite/client"]
   },
-  "include": [
-    "src",
-    "integrations",
-    ".astro/types.d.ts"
-  ]
+  "include": ["src", "vite.config.ts"]
 }

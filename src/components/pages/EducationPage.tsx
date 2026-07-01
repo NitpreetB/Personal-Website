@@ -1,51 +1,47 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { motion } from 'framer-motion';
+import PageShell from '@/components/PageShell';
+import { education } from '@/data/experience';
 
 export default function EducationPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Header />
+    <PageShell
+      eyebrow="Education"
+      title={
+        <>
+          Trained at <em className="text-accent">Waterloo</em>
+        </>
+      }
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="relative border-l border-light-gray pl-8 md:pl-10 max-w-4xl"
+      >
+        <span className="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-accent" />
 
-      <main className="flex-1">
-        <section className="w-full max-w-[100rem] mx-auto px-6 py-16 md:py-24">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="font-heading text-5xl md:text-6xl mb-12 text-foreground">
-              Education
-            </h1>
-
-            <div className="space-y-10">
-              <div className="border-l-2 border-accent pl-8 pb-2">
-                <div className="mb-2">
-                  <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                    <h2 className="font-heading text-2xl md:text-3xl text-foreground">
-                      University of Waterloo
-                    </h2>
-
-                    <div className="font-paragraph text-sm text-secondary">
-                      Sep 2021 – May 2026
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3 mt-1">
-                    <p className="font-paragraph text-lg text-accent">
-                      Bachelor of Applied Sciences (BASc)
-                    </p>
-                    <span className="font-paragraph text-sm text-secondary">
-                      • Waterloo, ON
-                    </span>
-                  </div>
-                </div>
-
-                <p className="mt-4 font-paragraph text-base text-foreground/80 leading-relaxed">
-                  Honours in Mechatronics Engineering
-                </p>
-              </div>
-            </div>
+        <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+          <h2 className="font-heading text-2xl md:text-3xl font-light text-foreground">
+            {education.school}
+          </h2>
+          <div className="font-paragraph text-xs uppercase tracking-widestplus text-secondary">
+            {education.period}
           </div>
-        </section>
-      </main>
+        </div>
 
-      <Footer />
-    </div>
+        <div className="flex flex-wrap items-center gap-3 mt-2">
+          <p className="font-paragraph text-lg text-accent">{education.degree}</p>
+          <span className="font-paragraph text-sm text-secondary">
+            · {education.location}
+          </span>
+        </div>
+
+        <p className="mt-6 font-paragraph text-base text-dark-gray leading-relaxed">
+          {education.program}. Mechanical, electrical, software, and control
+          systems in one degree — the deliberately greedy option, which is
+          exactly why I picked it.
+        </p>
+      </motion.div>
+    </PageShell>
   );
 }
