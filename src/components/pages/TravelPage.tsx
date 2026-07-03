@@ -1,88 +1,75 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Camera, MapPin, ArrowDown } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { trips, Trip, TripPhoto } from '@/data/trips';
 
 /**
- * One fluid page: every trip is a scroll "chapter" — no clicks, no modals.
- * A gold spine on the left fills as you travel down the timeline.
+ * One fluid page: every trip scrolls as one chapter with photos interspersed
+ * throughout the narrative. A gold spine on the left fills as you scroll.
  */
 
 function PhotoFrame({
   photo,
-  y,
-  tilt = 0,
+  size = 'medium',
   className = '',
-  captionClass = '',
 }: {
   photo: TripPhoto;
-  y?: MotionValue<number>;
-  tilt?: number;
+  size?: 'small' | 'medium' | 'large';
   className?: string;
-  captionClass?: string;
 }) {
+  const sizeClasses = {
+    small: 'max-w-md',
+    medium: 'max-w-2xl',
+    large: 'max-w-4xl',
+  };
+  const sizeClass = sizeClasses[size];
+
   if (!photo.src) {
     // "Wanted" slot — describes the shot to drop into photo-inbox/
     return (
-      <motion.figure style={{ y }} className={className}>
-        <div
-          className="relative w-full h-full min-h-[16rem] border border-dashed border-secondary/50 bg-panel shadow-[0_16px_60px_-12px_rgba(0,0,0,0.9)] flex flex-col items-center justify-center text-center p-8 gap-4"
-          style={{ transform: `rotate(${tilt}deg)` }}
-        >
+      <figure className={`${sizeClass} ${className}`}>
+        <div className="relative w-full min-h-[16rem] border border-dashed border-secondary/50 bg-panel shadow-[0_16px_60px_-12px_rgba(0,0,0,0.9)] flex flex-col items-center justify-center text-center p-8 gap-4">
           <Camera className="w-6 h-6 text-accent" />
           <p className="font-paragraph text-sm text-dark-gray leading-relaxed max-w-[16rem]">
             {photo.want}
           </p>
-          <p className="eyebrow !text-accent-dim">
-            photo-inbox / {photo.file}
-          </p>
+          <p className="eyebrow !text-accent-dim">photo-inbox / {photo.file}</p>
         </div>
-        <figcaption className={`mt-3 eyebrow ${captionClass}`}>{photo.caption}</figcaption>
-      </motion.figure>
+        <figcaption className="mt-4 eyebrow text-secondary">{photo.caption}</figcaption>
+      </figure>
     );
   }
 
   return (
-    <motion.figure style={{ y }} className={className}>
-      <div
-        className="relative w-full overflow-hidden border border-light-gray group"
-        style={{ transform: `rotate(${tilt}deg)` }}
-      >
+    <figure className={`${sizeClass} ${className}`}>
+      <div className="relative w-full overflow-hidden border border-light-gray group bg-panel aspect-video">
         <img
           src={photo.src}
           alt={photo.caption}
           loading="lazy"
-          className="w-full h-full object-cover saturate-[0.8] group-hover:saturate-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+          className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent pointer-events-none" />
-        {photo.temp && (
-          <span className="absolute top-3 right-3 px-2.5 py-1 font-paragraph text-[0.55rem] uppercase tracking-widestplus bg-background/80 text-secondary border border-light-gray">
-            Stand-in
-          </span>
-        )}
       </div>
-      <figcaption className={`mt-3 eyebrow ${captionClass}`}>{photo.caption}</figcaption>
-    </motion.figure>
+      <figcaption className="mt-4 eyebrow text-secondary">{photo.caption}</figcaption>
+    </figure>
   );
 }
 
 function Reveal({
   children,
-  delay = 0,
   className = '',
 }: {
   children: React.ReactNode;
-  delay?: number;
   className?: string;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-12% 0px' }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: '-5% 0px' }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
@@ -90,45 +77,21 @@ function Reveal({
   );
 }
 
-function Moment({ moment }: { moment: Trip['moments'][number] }) {
-  return (
-    <Reveal className="max-w-2xl">
-      <p className="eyebrow mb-4 !text-accent">{moment.day}</p>
-      <h3 className="font-heading text-2xl md:text-4xl font-light text-foreground mb-5">
-        {moment.heading}
-      </h3>
-      <p className="font-paragraph text-lg leading-relaxed text-dark-gray">
-        {moment.body}
-      </p>
-    </Reveal>
-  );
-}
-
 function TripChapter({ trip, index }: { trip: Trip; index: number }) {
-  const ref = useRef<HTMLElement | null>(null);
-  // Parallax: photos drift at different speeds while the chapter scrolls
+  const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: ['start 0.7', 'end end'],
   });
-  const drift = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const driftSlow = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const driftFast = useTransform(scrollYProgress, [0, 1], [70, -70]);
-
-  const [hero, street, detail, walk, candid, closing] = trip.photos;
 
   return (
     <section ref={ref} className="relative">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-        {/* Sticky trip rail */}
-        <div className="md:col-span-3 relative">
-          <div className="md:sticky md:top-32 space-y-4 pb-4">
-            <p className="eyebrow !text-accent">
-              Trip {String(index + 1).padStart(2, '0')}
-            </p>
-            <p className="font-heading italic text-2xl text-foreground leading-snug">
-              {trip.dates}
-            </p>
+      {/* Sticky trip metadata rail */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div className="md:col-span-3">
+          <div className="md:sticky md:top-32 space-y-4">
+            <p className="eyebrow !text-accent">Trip {String(index + 1).padStart(2, '0')}</p>
+            <p className="font-heading italic text-2xl text-foreground leading-snug">{trip.dates}</p>
             <div className="space-y-1 font-paragraph text-sm text-secondary">
               <p className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-accent-dim" />
@@ -140,80 +103,93 @@ function TripChapter({ trip, index }: { trip: Trip; index: number }) {
           </div>
         </div>
 
-        {/* Flowing chapter body */}
-        <div className="md:col-span-9 lg:col-span-8 space-y-20 md:space-y-28">
+        {/* Main narrative content with photos interspersed */}
+        <div className="md:col-span-9 lg:col-span-8 space-y-12">
           {/* Title + intro */}
           <Reveal>
-            <h2 className="font-heading text-5xl md:text-7xl font-light tracking-tight text-foreground">
+            <h2 className="font-heading text-5xl md:text-7xl font-light tracking-tight text-foreground mb-6">
               {trip.title.split(trip.accent)[0]}
               <em className="text-accent">{trip.accent}</em>
               {trip.title.split(trip.accent)[1]}
             </h2>
-            <p className="mt-8 font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray max-w-2xl">
+            <p className="font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray max-w-3xl">
               {trip.intro}
             </p>
           </Reveal>
 
-          {/* Cluster A — hero wide + street shot overlapping */}
-          <div className="relative">
-            <Reveal>
-              <PhotoFrame photo={hero} className="w-full [&_img]:aspect-[16/9]" />
-            </Reveal>
-            <Reveal delay={0.15} className="relative z-10 -mt-16 md:-mt-28 ml-auto w-2/3 md:w-[45%]">
-              <PhotoFrame photo={street} y={driftFast} tilt={1.2} className="[&_img]:aspect-[4/5]" />
-            </Reveal>
-          </div>
+          {/* Photo 1 - Hero (large) */}
+          <Reveal>
+            <PhotoFrame photo={trip.photos[0]} size="large" />
+          </Reveal>
 
-          <Moment moment={trip.moments[0]} />
+          {/* Moment 1 */}
+          <Reveal className="max-w-3xl">
+            <p className="eyebrow mb-3 !text-accent">{trip.moments[0].day}</p>
+            <h3 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-4">
+              {trip.moments[0].heading}
+            </h3>
+            <p className="font-paragraph text-base md:text-lg leading-relaxed text-dark-gray">
+              {trip.moments[0].body}
+            </p>
+          </Reveal>
 
-          {/* Cluster B — detail (wanted) + walk shot side by side, offset */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
-            <Reveal>
-              <PhotoFrame photo={detail} y={driftSlow} tilt={-1} className="[&_img]:aspect-square" />
-            </Reveal>
-            <Reveal delay={0.1} className="sm:mt-24">
-              <PhotoFrame photo={walk} y={drift} className="[&_img]:aspect-[4/5]" />
-            </Reveal>
-          </div>
+          {/* Photo 2 - Street (medium) */}
+          <Reveal>
+            <PhotoFrame photo={trip.photos[1]} size="medium" />
+          </Reveal>
 
-          <Moment moment={trip.moments[1]} />
+          {/* Photo 3 - Detail (small) */}
+          <Reveal>
+            <PhotoFrame photo={trip.photos[2]} size="small" />
+          </Reveal>
 
-          {/* Optional 3-up gallery row */}
+          {/* Moment 2 */}
+          <Reveal className="max-w-3xl">
+            <p className="eyebrow mb-3 !text-accent">{trip.moments[1].day}</p>
+            <h3 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-4">
+              {trip.moments[1].heading}
+            </h3>
+            <p className="font-paragraph text-base md:text-lg leading-relaxed text-dark-gray">
+              {trip.moments[1].body}
+            </p>
+          </Reveal>
+
+          {/* Photo 4 - Walk (medium) */}
+          <Reveal>
+            <PhotoFrame photo={trip.photos[3]} size="medium" />
+          </Reveal>
+
+          {/* Optional gallery interlude */}
           {trip.gallery && (
             <div>
-              <Reveal>
-                <p className="eyebrow mb-8 !text-accent">{trip.gallery.label}</p>
+              <Reveal className="mb-8">
+                <p className="eyebrow !text-accent">{trip.gallery.label}</p>
               </Reveal>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {trip.gallery.photos.map((photo, i) => (
-                  <Reveal key={photo.file} delay={i * 0.08} className={i === 1 ? 'sm:mt-12' : ''}>
-                    <PhotoFrame
-                      photo={photo}
-                      y={i === 1 ? driftSlow : drift}
-                      tilt={i === 0 ? -0.8 : i === 2 ? 0.8 : 0}
-                      className="[&_img]:aspect-[3/4]"
-                    />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                {trip.gallery.photos.map((photo) => (
+                  <Reveal key={photo.file}>
+                    <PhotoFrame photo={photo} size="small" />
                   </Reveal>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Cluster C — candid (wanted) small + closing wide */}
-          <div className="relative">
-            <Reveal>
-              <PhotoFrame
-                photo={closing}
-                captionClass="text-right"
-                className="w-full [&_img]:aspect-[16/9]"
-              />
-            </Reveal>
-            <Reveal delay={0.15} className="relative z-10 -mt-14 md:-mt-24 mr-auto w-2/3 md:w-[38%]">
-              <PhotoFrame photo={candid} y={driftFast} tilt={-1.5} />
-            </Reveal>
-          </div>
+          {/* Photo 5 - Closing (large) */}
+          <Reveal>
+            <PhotoFrame photo={trip.photos[4]} size="large" />
+          </Reveal>
 
-          <Moment moment={trip.moments[2]} />
+          {/* Moment 3 */}
+          <Reveal className="max-w-3xl">
+            <p className="eyebrow mb-3 !text-accent">{trip.moments[2].day}</p>
+            <h3 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-4">
+              {trip.moments[2].heading}
+            </h3>
+            <p className="font-paragraph text-base md:text-lg leading-relaxed text-dark-gray">
+              {trip.moments[2].body}
+            </p>
+          </Reveal>
         </div>
       </div>
     </section>

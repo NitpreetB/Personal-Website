@@ -34,8 +34,8 @@ export type Trip = {
   coords: string;
   duration: string;
   intro: string;
-  photos: TripPhoto[]; // exactly 6 slots: [hero, street, detail, walk, candid, closing]
-  gallery?: { photos: TripPhoto[]; label: string }; // optional 3-up bonus row
+  photos: TripPhoto[]; // photo slots interspersed with narrative
+  gallery?: { photos: TripPhoto[]; label: string }; // optional interlude row
   moments: TripMoment[];
 };
 
@@ -76,13 +76,8 @@ export const trips: Trip[] = [
         caption: 'Golden hour over the East River',
       },
       {
-        want: 'You in the frame — from behind or side, looking at the city (matches the rest of the site)',
-        file: 'nyc-05-candid.jpg',
-        caption: 'Proof I was actually there',
-      },
-      {
         src: '/photos/travel/nyc-06-closing-ferry.jpg',
-        want: 'Closing shot — the view you didn’t want to leave',
+        want: 'Closing shot — the view you didn\'t want to leave',
         file: 'nyc-06-closing-ferry.jpg',
         caption: 'From the ferry — one seagull photobombed',
       },
@@ -124,7 +119,90 @@ export const trips: Trip[] = [
       {
         day: 'Day 04',
         heading: 'Last light',
-        body: 'Mock copy — how it wrapped up. The last meal, the airport scramble, the one thing you’d go back for. End on the line you’d want someone to remember.',
+        body: 'Mock copy — how it wrapped up. The last meal, the airport scramble, the one thing you\'d go back for. End on the line you\'d want someone to remember.',
+      },
+    ],
+  },
+  {
+    id: 'italy-2026',
+    title: 'Across the Italian Canvas',
+    accent: 'Italian',
+    location: 'Venice → Rome',
+    dates: 'April 24 — May 1, 2026',
+    coords: '41.90° N, 12.50° E',
+    duration: '8 days',
+    intro:
+      'From the impossible city of water to the eternal capital. Eight days threading through Venice\'s impossibly narrow passages, descending into Pompeii\'s frozen moment, tracing the cliffside roads of the Amalfi Coast, and finally standing in the heart of Rome where every corner tells a story older than you.',
+    photos: [
+      {
+        src: '/photos/travel/italy-01-venice-opening.jpg',
+        want: 'Venice establishing shot — canal with gondolas or bridge at golden hour',
+        file: 'italy-01-venice-opening.jpg',
+        caption: 'Where the sea refuses to stay out',
+      },
+      {
+        src: '/photos/travel/italy-02-naples-street.jpg',
+        want: 'A moment in the streets of Naples — street food, vibrant chaos, or a narrow alley',
+        file: 'italy-02-naples-street.jpg',
+        caption: 'The heartbeat of the south',
+      },
+      {
+        src: '/photos/travel/italy-03-pompeii-detail.jpg',
+        want: 'Pompeii detail — ancient mosaic, a doorway, or eroded stone',
+        file: 'italy-03-pompeii-detail.jpg',
+        caption: 'Frozen in ash, speaking across centuries',
+      },
+      {
+        src: '/photos/travel/italy-04-amalfi-vista.jpg',
+        want: 'Amalfi Coast vista — clifftop view, terraced buildings, or sea-level perspective',
+        file: 'italy-04-amalfi-vista.jpg',
+        caption: 'Where the land refuses to end gracefully',
+      },
+      {
+        src: '/photos/travel/italy-05-rome-eternal.jpg',
+        want: 'Rome monument — Colosseum, Vatican, or a quiet piazza at dusk',
+        file: 'italy-05-rome-eternal.jpg',
+        caption: 'The empire still stands, if you know where to look',
+      },
+    ],
+    gallery: {
+      label: 'Interlude — Moments in Light',
+      photos: [
+        {
+          src: '/photos/travel/italy-06-venice-detail.jpg',
+          want: 'Venice detail shot',
+          file: 'italy-06-venice-detail.jpg',
+          caption: 'Venice whispers in doorways',
+        },
+        {
+          src: '/photos/travel/italy-07-coast-detail.jpg',
+          want: 'Amalfi Coast detail',
+          file: 'italy-07-coast-detail.jpg',
+          caption: 'Where terraces meet sky',
+        },
+        {
+          src: '/photos/travel/italy-08-rome-detail.jpg',
+          want: 'Rome detail shot',
+          file: 'italy-08-rome-detail.jpg',
+          caption: 'Rome\'s quiet corners tell stories',
+        },
+      ],
+    },
+    moments: [
+      {
+        day: 'Day 01 — 02',
+        heading: 'Sinking into Venice',
+        body: 'You step off the vaporetto and realize the water is not a feature—it\'s the foundation. Venice doesn\'t sit on the water; it breathes with it. Every canal is a street, every bridge a conversation. By the second day, you stop checking maps. Getting lost is the point.',
+      },
+      {
+        day: 'Day 03 — 05',
+        heading: 'The Ancient South',
+        body: 'Naples hits you first—loud, vivid, alive. Then you descend into Pompeii and everything stops. The preserved loaves of bread. The hollow spaces left by bodies. 79 AD and 2026 collapse into a single moment. The Amalfi Coast rewards the winding drive: impossible views, fresh seafood, the kind of beauty that makes you understand why people write poetry.',
+      },
+      {
+        day: 'Day 06 — 08',
+        heading: 'Rome Doesn\'t Ask Permission',
+        body: 'The city announces itself before you arrive. Rome doesn\'t whisper—it proclaims. The Colosseum, the Vatican, the quiet piazzas where locals sit as if they\'re not surrounded by the greatest empire ever built. You leave knowing you\'ll spend a lifetime understanding what you saw in a week.',
       },
     ],
   },

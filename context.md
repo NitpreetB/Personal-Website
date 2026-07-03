@@ -208,25 +208,28 @@ scroll** — no clicking into external/detail pages. Photos placed throughout.
 - Optional **3-up gallery row** per trip (used for a "The Met" interlude).
 - Page ends with a **"Next stop — To be determined…"** teaser for the next trip.
 
-**Photo slot system in `trips.ts`:** each trip has a `photos[]` array. A slot with
-`src` set renders the image; a slot with **no `src`** renders a dashed **"wanted"
-frame** on the page describing the shot + the filename to drop in `photo-inbox/`.
-This is how missing photos are represented.
+**Photo slot system in `trips.ts`:** each trip has a `photos[]` array (5 slots).
+A slot with `src` set renders the image; a slot with **no `src`** renders a
+dashed **"wanted" frame** on the page describing the shot + the filename to drop
+in `photo-inbox/`. This is how missing photos are represented.
 
 **First trip: New York City (May 15–18, 2026).**
-- Owner dropped 12 iPhone `.HEIC` photos into `photo-inbox/NYC_2026/`.
-- They were converted to optimized web JPEGs (via `pillow-heif` in Python;
-  libheif's `heif-convert` CLI FAILED on these HDR files with "Too many auxiliary
-  image references" — use pillow-heif if you need to convert more).
-- 8 are placed in `public/photos/travel/`: hero-dusk (Hudson Yards), street-
-  timessquare, detail-pizza, walk-dumbo (East River golden hour), closing-ferry
-  (skyline + seagull), and a 3-shot Met interlude (facade, court, papyrus).
-- **1 slot still open:** `nyc-05-candid.jpg` — "you in the frame, looking at the
-  city." Renders as a wanted-frame until provided.
-- Unused-but-available extras still in `NYC_2026/`: One Vanderbilt at night, One
-  World Trade look-up, NYSE facade, Nike billboard.
+- All 5 primary photos placed in `public/photos/travel/`.
+- Converted from iPhone HEIC via pillow-heif (libheif's `heif-convert` CLI failed
+  on HDR files with "Too many auxiliary image references").
+- 8 JPEG files: nyc-01-hero-dusk, nyc-02-street-timessquare, nyc-03-detail-pizza,
+  nyc-04-walk-dumbo, nyc-06-closing-ferry, plus 3-shot Met interlude (facade,
+  court, papyrus).
+- **Candid photo removed** (`nyc-05-candid.jpg` — "Proof I was there") per owner request.
+- Narrative prose still placeholder copy — owner to provide real stories.
 
-**⚠️ STILL MOCK / PLACEHOLDER:** All trip prose (`intro` + the three `moments`
+**Second trip: Italy (April 24–May 1, 2026): draft added, awaiting photos.**
+- Multi-city: Venice → Naples → Pompeii → Amalfi Coast → Rome.
+- 5 photo slots + optional 3-photo Pompeii gallery (8 total "wanted" frames).
+- All photo descriptions and captions already in `trips.ts`.
+- Owner drops HEIC files in `photo-inbox/Italy_2026/` → Claude optimizes & places.
+
+**⚠️ PLACEHOLDER CONTENT:** All trip prose (`intro` + the three `moments`
 bodies) in `trips.ts` is **placeholder copy** the owner will replace with real
 stories. Keep lengths similar so the layout breathes. Adding future trips = append
 another object to the `trips` array (they render oldest→newest by array order).
@@ -310,12 +313,16 @@ Only commit/push when the owner asks.
 - ✅ Home, Projects, Project detail, Work, Education, Story pages
 - ✅ Removed Books/Activities/Blog
 - ✅ Music & Movies redesigned with heavy animation
-- ✅ Travel page built with fluid scrollytelling + real NYC photos placed
+- ✅ Travel page built with fluid scrollytelling + NYC photos placed
+- ✅ Candid "proof I was there" photo slot removed per owner request
+- ✅ Italy trip (April 24–May 1, 2026) added as draft, awaiting photos
 - ✅ Pushed to GitHub, deployed on Vercel (auto-deploy live)
 
 **Outstanding / next likely tasks:**
-- ⬜ Real trip copy for NYC (owner to provide) — replace mocks in `trips.ts`
-- ⬜ `nyc-05-candid.jpg` photo (the open "wanted" slot)
+- ⬜ Italy trip photos: owner drops HEIC files in `photo-inbox/Italy_2026/`, Claude
+  converts & places (8 photos: 5 primary + 3 gallery)
+- ⬜ Real trip narratives for NYC & Italy (owner to provide) — replace mocks in
+  `trips.ts`
 - ⬜ Real reviews for Music albums & Movies (currently "Review coming soon")
 - ⬜ More trips appended to `trips.ts` as they happen
 - ⬜ (Optional) delete dead `src/components/Head.tsx`
