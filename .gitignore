@@ -13,6 +13,9 @@ npm-debug.log*
 .env
 .env.*
 
+# Google Photos CLI credentials (OAuth client secret + refresh token)
+.google-photos-credentials.json
+
 # editor / OS
 .DS_Store
 .idea/
