@@ -128,15 +128,6 @@ export default function HomePage() {
             style={{ y: heroY, opacity: heroOpacity }}
             className="relative z-10 max-w-site mx-auto w-full"
           >
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.1 }}
-              className="eyebrow mb-8"
-            >
-              {site.location} — after dark
-            </motion.p>
-
             <h1 className="font-heading font-light text-[13.5vw] md:text-[10.5vw] leading-[0.9] tracking-tight text-foreground">
               {heroWords.map((word, wi) => (
                 <span key={wi} className="block overflow-hidden">

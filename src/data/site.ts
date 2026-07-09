@@ -6,7 +6,7 @@ export const site = {
   name: 'Nitpreet Bamra',
   role: 'Engineer · Analyst · Student',
   tagline:
-    'Mechatronics engineer working where data, machines, and intelligence overlap.',
+    "I'm an engineer, a traveler, and athlete from Canada.",
   location: 'Mississauga ↔ Waterloo, Ontario',
   currently: 'Data Analyst @ Super.com',
   email: 'nitpreetbamra@gmail.com',

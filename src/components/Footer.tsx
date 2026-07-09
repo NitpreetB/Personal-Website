@@ -15,18 +15,17 @@ export default function Footer() {
 
       <div className="max-w-site mx-auto px-[5%] pt-24 pb-12 relative">
         <div className="mb-20">
-          <p className="eyebrow mb-6">Get in touch</p>
+          <p className="eyebrow mb-6">Correspondence</p>
           <a
             href={`mailto:${site.email}`}
-            className="group inline-flex items-start gap-4 font-heading text-5xl md:text-7xl text-foreground hover:text-accent transition-colors duration-300"
+            className="group inline-flex items-center gap-x-3 gap-y-2 flex-wrap font-heading text-2xl md:text-4xl text-foreground hover:text-accent transition-colors duration-300"
           >
-            Say hello
-            <ArrowUpRight className="w-8 h-8 md:w-12 md:h-12 mt-2 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+            <span className="italic">Write to me —</span>
+            <span className="border-b border-accent/40 group-hover:border-accent transition-colors">
+              {site.email}
+            </span>
+            <ArrowUpRight className="w-5 h-5 md:w-7 md:h-7 text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </a>
-          <p className="mt-6 font-paragraph text-base text-secondary max-w-md">
-            Open to interesting problems, good conversations, and album
-            recommendations.
-          </p>
         </div>
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10 pt-8 border-t border-light-gray">
@@ -35,7 +34,7 @@ export default function Footer() {
               {site.name}
             </p>
             <p className="font-paragraph text-sm text-secondary">
-              {site.location} · © {currentYear}
+              © {currentYear}
             </p>
           </div>
 

@@ -44,12 +44,12 @@ function PhotoFrame({
 
   return (
     <figure className={`${sizeClass} ${className}`}>
-      <div className="relative w-full overflow-hidden border border-light-gray group bg-panel aspect-video">
+      <div className="relative w-full overflow-hidden border border-light-gray group bg-panel">
         <img
           src={photo.src}
           alt={photo.caption}
           loading="lazy"
-          className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-500"
+          className="w-full h-auto block group-hover:opacity-90 transition-opacity duration-500"
         />
       </div>
       <figcaption className="mt-4 eyebrow text-secondary">{photo.caption}</figcaption>
