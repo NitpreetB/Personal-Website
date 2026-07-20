@@ -15,6 +15,7 @@ import EducationPage from '@/components/pages/EducationPage';
 import TravelPage from '@/components/pages/TravelPage';
 import MusicPage from '@/components/pages/MusicPage';
 import MoviesPage from '@/components/pages/MoviesPage';
+import RouteGradePage from '@/components/pages/RouteGradePage';
 
 function Layout() {
   return (
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
       { path: 'work', element: <WorkPage /> },
       { path: 'education', element: <EducationPage /> },
       { path: 'travel', element: <TravelPage /> },
+      { path: 'routegrade', element: <RouteGradePage /> },
       { path: 'music', element: <MusicPage /> },
       { path: 'movies', element: <MoviesPage /> },
       { path: '*', element: <Navigate to="/" replace /> },

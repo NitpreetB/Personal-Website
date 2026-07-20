@@ -8,6 +8,7 @@ const menuGroups: { label: string; links: { label: string; path: string }[] }[] 
   {
     label: 'The Work',
     links: [
+      { label: 'RouteGrade', path: '/routegrade' },
       { label: 'Projects', path: '/projects' },
       { label: 'Experience', path: '/work' },
       { label: 'Education', path: '/education' },
@@ -30,6 +31,7 @@ const menuGroups: { label: string; links: { label: string; path: string }[] }[] 
 ];
 
 const quickLinks = [
+  { label: 'RouteGrade', path: '/routegrade' },
   { label: 'Projects', path: '/projects' },
   { label: 'Experience', path: '/work' },
   { label: 'Story', path: '/story' },
