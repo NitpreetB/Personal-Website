@@ -166,10 +166,9 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-10 font-paragraph text-lg md:text-xl leading-relaxed text-dark-gray max-w-2xl">
-              I'm a final-year Mechatronics Engineering student at the
-              University of Waterloo, currently working in data at Super.com.
-              Four co-ops deep into machine learning, computer vision, and
-              analytics — and still collecting obsessions on the side.
+              I'm doing a Master of Data Science at UBC. Before that I
+              finished an engineering degree at the University of Waterloo
+              and spent over two years working in industry.
             </p>
           </Reveal>
           <Reveal delay={0.25}>
