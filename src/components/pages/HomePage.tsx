@@ -80,23 +80,6 @@ export default function HomePage() {
 
   const heroWords = site.name.split(' ');
 
-  const reviewLinks = [
-    {
-      title: 'Music',
-      to: '/music',
-      note: 'Albums on rotation, rated without mercy.',
-      cover:
-        'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80',
-    },
-    {
-      title: 'Movies',
-      to: '/movies',
-      note: 'The good, the bad, and the rewatched.',
-      cover:
-        'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1200&q=80',
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Global scroll progress */}
@@ -296,98 +279,6 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </Reveal>
-        </SectionShell>
-
-        {/* --- OFF HOURS / REVIEWS --- */}
-        <section className="w-full py-28 md:py-36 px-[5%] bg-panel border-y border-light-gray">
-          <div className="max-w-site mx-auto">
-            <span className="eyebrow block mb-4">04 — Off hours</span>
-            <h2 className="font-heading text-4xl md:text-6xl font-light text-foreground mb-6">
-              The Takes
-            </h2>
-            <p className="font-paragraph text-lg text-dark-gray max-w-2xl mb-16">
-              Everything I consume, rated. Explore the good, the bad, and the
-              ugly — and steal an obsession or two.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {reviewLinks.map((item, idx) => (
-                <Reveal key={item.to} delay={idx * 0.08}>
-                  <Link to={item.to} className="group block">
-                    <div className="relative w-full aspect-[16/10] overflow-hidden border border-light-gray">
-                      <img
-                        src={item.cover}
-                        alt={`${item.title} — reviews`}
-                        loading="lazy"
-                        className="w-full h-full object-cover saturate-[0.6] group-hover:saturate-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <h3 className="font-heading text-3xl font-light text-foreground group-hover:text-accent group-hover:italic transition-colors duration-300">
-                          {item.title}
-                        </h3>
-                        <p className="mt-2 font-paragraph text-sm text-dark-gray">
-                          {item.note}
-                        </p>
-                      </div>
-                      <div className="absolute top-5 right-5 w-9 h-9 border border-foreground/30 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:border-accent transition-all duration-300">
-                        <ArrowUpRight className="w-4 h-4 text-accent" />
-                      </div>
-                    </div>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-
-            <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4">
-              {[{ label: 'Travel', to: '/travel' }].map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  className="group inline-flex items-center gap-2 font-paragraph text-xs uppercase tracking-widestplus text-secondary hover:text-accent transition-colors"
-                >
-                  {l.label}
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* --- HOME BASE --- */}
-        <SectionShell label="05 — Home base">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-5 space-y-6">
-              <Reveal>
-                <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground">
-                  Mississauga,
-                  <br />
-                  <em className="text-accent">Ontario</em>
-                </h2>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="font-paragraph text-lg leading-relaxed text-dark-gray">
-                  A city that thrives on its own diversity and culture. Home
-                  base between Waterloo terms and wherever work points next.
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="lg:col-span-7">
-              <Reveal delay={0.15}>
-                <div className="relative w-full aspect-[16/10] overflow-hidden border border-light-gray">
-                  <img
-                    src="https://media.istockphoto.com/id/1083429836/photo/absolute-towers-in-mississauga-ontario-canada-night-shot.jpg?s=612x612&w=0&k=20&c=0qCqzC05UhQps7C30VkWQaSdds4FJSPET2wW8uvK7bU="
-                    alt="Absolute Towers, Mississauga at night"
-                    loading="lazy"
-                    className="w-full h-full object-cover saturate-[0.8]"
-                  />
-                  <div className="absolute inset-0 bg-background/20" />
-                </div>
-                <p className="mt-4 eyebrow">43.59° N, 79.64° W</p>
-              </Reveal>
-            </div>
-          </div>
         </SectionShell>
       </main>
 

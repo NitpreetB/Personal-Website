@@ -5,8 +5,7 @@
 export const site = {
   name: 'Nitpreet Bamra',
   role: 'Engineer · Analyst · Student',
-  tagline:
-    "I'm an engineer, a traveler, and athlete from Canada.",
+  tagline: "I'm an engineer, a traveler, and athlete.",
   location: 'Mississauga ↔ Waterloo, Ontario',
   currently: 'Data Analyst @ Super.com',
   email: 'nitpreetbamra@gmail.com',
