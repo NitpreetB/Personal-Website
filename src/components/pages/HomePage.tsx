@@ -7,7 +7,7 @@ import {
   useSpring,
   useInView,
 } from 'framer-motion';
-import { ArrowRight, ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { format } from 'date-fns';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -166,19 +166,10 @@ export default function HomePage() {
                 <p>
                   Currently — <span className="text-foreground">{site.currently}</span>
                 </p>
+                <p className="mt-1">Data Science @ UBC</p>
                 <p className="mt-1">Mechatronics @ University of Waterloo</p>
               </motion.div>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.6, duration: 1 }}
-            className="absolute bottom-6 left-[5%] z-10 flex items-center gap-4"
-          >
-            <ArrowDown className="w-4 h-4 animate-bounce text-accent" />
-            <span className="eyebrow">Scroll to explore</span>
           </motion.div>
         </section>
 
@@ -186,9 +177,8 @@ export default function HomePage() {
         <SectionShell label="01 — About">
           <Reveal>
             <p className="font-heading text-3xl md:text-5xl font-light leading-tight text-foreground">
-              I like systems you can <em className="text-accent">feel</em> —
-              pricing models that move markets, cameras that watch roads,
-              platforms that balance on the edge.
+              I use engineering to make things work and data to{' '}
+              <em className="text-accent">prove</em> they do.
             </p>
           </Reveal>
           <Reveal delay={0.15}>

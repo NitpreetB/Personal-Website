@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Camera, MapPin, ArrowDown } from 'lucide-react';
+import { Camera, MapPin } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { trips, Trip, TripPhoto } from '@/data/trips';
@@ -223,10 +223,6 @@ export default function TravelPage() {
               Every trip, in the order it happened — one continuous scroll.
               No albums to click through; just keep going.
             </p>
-            <div className="mt-12 flex items-center gap-4">
-              <ArrowDown className="w-4 h-4 animate-bounce text-accent" />
-              <span className="eyebrow">Start in May 2026</span>
-            </div>
           </motion.div>
         </section>
 
